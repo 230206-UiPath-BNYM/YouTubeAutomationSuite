@@ -1,0 +1,6 @@
+﻿{
+	"snippet" : {
+			"title" : "My favorite songs",
+			"description": "A playlist of my favorite songs"
+		}
+}
