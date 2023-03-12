@@ -1,9 +1,0 @@
-﻿{
-  "snippet": {
-    "title": "New playlist",
-    "description": "New playlist description"
-  },
-  "status": {
-    "privacyStatus": "private"
-  }
-}
