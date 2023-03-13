@@ -7,7 +7,8 @@
     "UiPath.Mail.Activities": "[1.18.2]",
     "UiPath.System.Activities": "[22.10.4]",
     "UiPath.Testing.Activities": "[22.10.3]",
-    "UiPath.UIAutomation.Activities": "[22.10.5]"
+    "UiPath.UIAutomation.Activities": "[22.10.5]",
+    "UiPath.WebAPI.Activities": "[1.15.0-preview]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -21,6 +22,7 @@
     "isAttended": false,
     "requiresUserInteraction": true,
     "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
     "excludedLoggedData": [
       "Private:*",
       "*password*"
