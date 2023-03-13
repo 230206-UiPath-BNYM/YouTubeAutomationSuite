@@ -1,0 +1,9 @@
+﻿{
+  "snippet": {
+    "playlistId": "PLrH3xuQqFq0YzWthXys072XVM6OhVgiS7",
+    "resourceId": {
+		"kind": "youtube#video",
+		"videoId": "kfTznsLv_OU"
+		}
+  }
+}
