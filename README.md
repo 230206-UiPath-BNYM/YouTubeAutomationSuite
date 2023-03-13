@@ -5,7 +5,6 @@
 - Gavin Gilbert (Team Lead)
 - Irving Gonzalez Islas
 - Justin Quach
-- Mohammed Affaan Hyder Khan
 
 ## Project Overview
 
