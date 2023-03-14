@@ -1,0 +1,7 @@
+﻿{
+  "id": "YOUR_PLAYLIST_ID",
+  "snippet": {
+  "title" : "NEWPLAYLIST_TITLE",
+    "description": "playlist_description"
+  }
+}
