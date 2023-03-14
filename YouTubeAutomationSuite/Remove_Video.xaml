@@ -5,10 +5,10 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>637,892</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1119,1348</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Create_Playlist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="60">
+    <scg:List x:TypeArguments="x:String" Capacity="31">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -43,7 +43,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="76">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -82,17 +82,30 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Remove_Video" sap:VirtualizedContainerService.HintSize="400,827" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Remove_Video" sap:VirtualizedContainerService.HintSize="400,1283" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="reqCode" />
       <Variable x:TypeArguments="x:String" Name="token" />
       <Variable x:TypeArguments="x:String" Name="readFile" />
       <Variable x:TypeArguments="x:String" Name="reqContent" />
-      <Variable x:TypeArguments="x:String" Name="reqUrl">
+      <Variable x:TypeArguments="x:String" Default="https://youtube.googleapis.com/youtube/v3/playlistItems?id=PLACEHOLDER&amp;key=AIzaSyCYTu4q8uWEprdmBixv-7fmE6GQT6mKrE0" Name="reqUrl" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="itemID">
         <Variable.Default>
-          <Literal x:TypeArguments="x:String">https://youtube.googleapis.com/youtube/v3/playlistItems?id=PLACEHOLDER&amp;key=AIzaSyCYTu4q8uWEprdmBixv-7fmE6GQT6mKrE0</Literal>
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(Of String)({})" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="scg:List(x:String)" Name="itemName">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(Of String)({})" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="userIn" />
+      <Variable x:TypeArguments="x:String" Name="outputOptions">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String" Value="" />
         </Variable.Default>
       </Variable>
     </Sequence.Variables>
@@ -106,6 +119,33 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_accessToken">[token]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_Videos.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Get_Videos.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_itemID">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="itemID" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_itemName">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="itemName" />
+        </InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_authToken">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="token" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="338,292" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Delete which video?" Options="[itemName.ToArray]" Title="YAS">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[userIn]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[userIn]" />
+    <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_playVideoID]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[itemID(itemName.IndexOf(userIn))]</InArgument>
+      </Assign.Value>
+    </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[reqUrl]</OutArgument>
@@ -143,8 +183,6 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[reqCode.ToString]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[reqContent]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[reqCode.ToString]" />
   </Sequence>
 </Activity>
