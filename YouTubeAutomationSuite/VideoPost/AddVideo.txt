@@ -1,0 +1,9 @@
+﻿{
+  "snippet": {
+    "playlistId": "PLACEHOLDER1",
+    "resourceId": {
+		"kind": "youtube#video",
+		"videoId": "PLACEHOLDER2"
+		}
+  }
+}
