@@ -4,11 +4,12 @@
     <x:Property Name="out_User_Playlist_Dict" Type="OutArgument(scg:Dictionary(x:String, x:String))" />
     <x:Property Name="out_playlist_Selected_String" Type="OutArgument(x:String)" />
     <x:Property Name="out_Token" Type="OutArgument(x:String)" />
+    <x:Property Name="out_description_dict" Type="OutArgument(scg:Dictionary(x:String, x:String))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>914,2740</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1202,2958</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DeletePlaylist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="36">
@@ -51,7 +52,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="48">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="96">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -99,9 +100,10 @@
       <AssemblyReference>System.Collections.Specialized</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetPlaylistsFromUser" sap:VirtualizedContainerService.HintSize="594,2675" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetPlaylistsFromUser" sap:VirtualizedContainerService.HintSize="594,2893" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="respone_Content" />
       <Variable x:TypeArguments="x:Int32" Name="response_Status" />
@@ -111,18 +113,23 @@
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="playlist_ID_List" />
       <Variable x:TypeArguments="x:String" Name="playlist_Selected_String" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(Of String, String)]" Name="playlist_Dict" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="description_Dict">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="New Dictionary(Of String, String)" />
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="OAuthGen.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="532,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="OAuthGen.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="OAuthGen.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="OAuthGen.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="out_accessToken">[in_Token]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="https://www.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&amp;mine=true" sap:VirtualizedContainerService.HintSize="532,71" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="GET" OAuth2Token="[in_Token]" Result="[respone_Content]" StatusCode="[response_Status]" TimeoutMS="6000">
+    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="https://www.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&amp;mine=true" sap:VirtualizedContainerService.HintSize="532,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="GET" OAuth2Token="[in_Token]" Result="[respone_Content]" StatusCode="[response_Status]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -140,16 +147,16 @@
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
     <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="532,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[result_JSON]" JsonString="[respone_Content]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,94" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[result_JSON]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[result_JSON]" />
     <ui:DeserializeJsonArray DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="532,60" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_1" JsonArray="[Deserialize_JSON_Array]" JsonString="[result_JSON(&quot;items&quot;).ToString]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,94" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[Deserialize_JSON_Array]" />
-    <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="532,873" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Deserialize_JSON_Array]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[Deserialize_JSON_Array]" />
+    <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="532,985" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Deserialize_JSON_Array]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="njl:JToken">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="njl:JToken" Name="item" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,747" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,860" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="njl:JArray" Name="snippet_JSON_ARRAY" />
               <Variable x:TypeArguments="x:String" Name="playlist_Name" />
@@ -160,8 +167,8 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="434,135" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_1" ItemToAppend="[item(&quot;snippet&quot;)(&quot;title&quot;).ToString]" List="[playlist_ID_List]" />
-            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_1" ItemToAppend="[item(&quot;snippet&quot;)(&quot;title&quot;).ToString]" List="[playlist_ID_List]" />
+            <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[playlist_Name]</OutArgument>
               </Assign.To>
@@ -169,7 +176,7 @@
                 <InArgument x:TypeArguments="x:String">[item("snippet")("title").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[playlist_ID]</OutArgument>
               </Assign.To>
@@ -177,7 +184,15 @@
                 <InArgument x:TypeArguments="x:String">[item("id").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[description_Dict(playlist_Name)]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[item("snippet")("description").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_8">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[playlist_Dict(playlist_Name)]</OutArgument>
               </Assign.To>
@@ -185,7 +200,7 @@
                 <InArgument x:TypeArguments="x:String">[playlist_ID]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,94" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Playlist ID = &quot; + item(&quot;snippet&quot;)(&quot;title&quot;).ToString]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Playlist ID = &quot; + item(&quot;snippet&quot;)(&quot;title&quot;).ToString]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
@@ -196,7 +211,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <Assign sap:VirtualizedContainerService.HintSize="532,83" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="532,81" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[menuPlayListArray]</OutArgument>
       </Assign.To>
@@ -204,7 +219,7 @@
         <InArgument x:TypeArguments="s:String[]">[playlist_ID_List.ToArray]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="532,297" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Which playlist would you like to edit?" Options="[menuPlayListArray]" Title="Playlist to Edit">
+    <ui:InputDialog OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="532,292" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Which playlist would you like to edit?" Options="[menuPlayListArray]" Title="Playlist to Edit">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[playlist_Selected_String]</OutArgument>
       </ui:InputDialog.Result>
@@ -215,7 +230,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InputDialog>
-    <Assign sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <Assign sap:VirtualizedContainerService.HintSize="532,81" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_playlist_Selected_String]</OutArgument>
       </Assign.To>
@@ -223,7 +238,7 @@
         <InArgument x:TypeArguments="x:String">[playlist_Selected_String]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign sap:VirtualizedContainerService.HintSize="532,81" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_User_Playlist_Dict]</OutArgument>
       </Assign.To>
@@ -231,7 +246,15 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[playlist_Dict]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+    <Assign sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_description_dict]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[description_Dict]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="532,81" sap2010:WorkflowViewState.IdRef="Assign_7">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_Token]</OutArgument>
       </Assign.To>
