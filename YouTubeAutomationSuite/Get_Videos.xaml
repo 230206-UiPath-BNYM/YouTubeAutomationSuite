@@ -102,7 +102,7 @@
       <AssemblyReference>System.Collections</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Videos" sap:VirtualizedContainerService.HintSize="498,1448" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Videos" sap:VirtualizedContainerService.HintSize="498,1318" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="reqCode" />
       <Variable x:TypeArguments="x:String" Name="token" />
@@ -156,7 +156,6 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[reqCode.ToString]" />
     <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[JsonDerulo]" JsonString="[reqContent]" />
     <ui:DeserializeJsonArray DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_1" JsonArray="[JsonArr]" JsonString="[JsonDerulo(&quot;items&quot;).ToString]" />
     <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="436,612" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[JsonArr]">
