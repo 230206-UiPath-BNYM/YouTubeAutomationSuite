@@ -6,10 +6,10 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>390,430</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>390,550</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Run_Database_Command_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="29">
+    <scg:List x:TypeArguments="x:String" Capacity="30">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -39,10 +39,11 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -70,18 +71,29 @@
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Run_Database_Command" sap:VirtualizedContainerService.HintSize="400,365" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Run_Database_Command" sap:VirtualizedContainerService.HintSize="400,485" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="db_con" />
+      <Variable x:TypeArguments="x:String" Name="db_con_string" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SqlClient" ConnectionString="Server=tcp:uipath-yas.database.windows.net,1433;Initial Catalog=yas_db;Persist Security Info=False;User ID=yaaas;Password=guessWho?;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" DatabaseConnection="[db_con]" />
+    <ui:ReadTextFile File="{x:Null}" Content="[db_con_string]" DisplayName="Read Text File" FileName="db_creds.txt" sap:VirtualizedContainerService.HintSize="338,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[db_con_string]" DatabaseConnection="[db_con]" />
     <ui:ExecuteNonQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" AffectedRecords="[out_numRowsAffected]" CommandType="Text" DisplayName="Run command" ExistingDbConnection="[db_con]" sap:VirtualizedContainerService.HintSize="338,89" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[in_command]">
       <ui:ExecuteNonQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />

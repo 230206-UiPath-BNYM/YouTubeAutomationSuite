@@ -1,16 +1,15 @@
 {
   "name": "YouTubeAutomationSuite",
-  "description": "YouTubeAutomationSuite",
+  "description": "Blank Process",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Database.Activities": "[1.7.1]",
     "UiPath.Excel.Activities": "[2.16.2]",
     "UiPath.Mail.Activities": "[1.18.2]",
-    "UiPath.Excel.Activities": "[2.16.1]",
     "UiPath.System.Activities": "[22.10.4]",
-    "UiPath.Testing.Activities": "[22.10.1]",
-    "UiPath.UIAutomation.Activities": "[22.10.4]",
-    "UiPath.WebAPI.Activities": "[1.13.3]"
+    "UiPath.Testing.Activities": "[22.10.3]",
+    "UiPath.UIAutomation.Activities": "[22.10.5]",
+    "UiPath.WebAPI.Activities": "[1.15.0-preview]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -44,57 +43,14 @@
     "processOptions": {
       "ignoredFiles": []
     },
-    "fileInfoCollection": [
-      {
-        "editingStatus": "InProgress",
-        "testCaseId": "28586706-b342-4077-a905-3b7c997fd259",
-        "testCaseType": "TestCase",
-        "executionTemplateType": "Local",
-        "fileName": "Tests\\GetTransactionDataTestCase.xaml"
-      },
-      {
-        "editingStatus": "InProgress",
-        "testCaseId": "b05fa454-91ff-417b-b1a0-5a40626a0cbe",
-        "testCaseType": "TestCase",
-        "executionTemplateType": "Local",
-        "fileName": "Tests\\InitAllApplicationsTestCase.xaml"
-      },
-      {
-        "editingStatus": "InProgress",
-        "testCaseId": "dccc0901-70c5-4fad-9ce3-3d24107d3458",
-        "testCaseType": "TestCase",
-        "executionTemplateType": "Local",
-        "fileName": "Tests\\InitAllSettingsTestCase.xaml"
-      },
-      {
-        "editingStatus": "InProgress",
-        "testCaseId": "ed472b3e-1d72-4883-9010-f9c048d357d2",
-        "testCaseType": "TestCase",
-        "executionTemplateType": "Local",
-        "fileName": "Tests\\MainTestCase.xaml"
-      },
-      {
-        "editingStatus": "InProgress",
-        "testCaseId": "dcca6746-c0f3-4c07-9879-1bffc9a3f41a",
-        "testCaseType": "TestCase",
-        "executionTemplateType": "Local",
-        "fileName": "Tests\\ProcessTestCase.xaml"
-      },
-      {
-        "editingStatus": "InProgress",
-        "testCaseId": "a02711a4-dd65-4706-920e-767c06a8a6f4",
-        "testCaseType": "TestCase",
-        "executionTemplateType": "Local",
-        "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
-      }
-    ],
-    "modernBehavior": false
+    "fileInfoCollection": [],
+    "modernBehavior": true
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
       "filePath": "Main.xaml",
-      "uniqueId": "566b579f-f89c-4cff-9459-43f9e7b4f80b",
+      "uniqueId": "6eac17ef-7de8-4864-9076-5e2c7b30f09f",
       "input": [],
       "output": []
     }
