@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>899,1682</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>959,1550</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Edit_Description_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -84,17 +84,13 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Edit_Description" sap:VirtualizedContainerService.HintSize="496,1617" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Edit_Description" sap:VirtualizedContainerService.HintSize="496,1485" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="playlist_Description_Body_Txt" />
       <Variable x:TypeArguments="x:String" Name="new_Description" />
       <Variable x:TypeArguments="x:String" Name="edit_Playlist_Name" />
       <Variable x:TypeArguments="x:String" Name="edit_Playlist_ID" />
-      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="Playlist_Dict">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="New Dictionary(Of String, String)" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(Of String, String)]" Name="Playlist_Dict" />
       <Variable x:TypeArguments="x:String" Name="response_Content" />
       <Variable x:TypeArguments="x:Int32" Name="response_Status" />
       <Variable x:TypeArguments="x:String" Name="playlist_ID" />
@@ -107,15 +103,9 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetPlaylistFromUser.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="GetPlaylistFromUser.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_Token" />
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_User_Playlist_Dict">
-          <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="Playlist_Dict" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_playlist_Selected_String">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="edit_Playlist_Name" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_Token">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="in_Token" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_User_Playlist_Dict">[Playlist_Dict]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_playlist_Selected_String">[edit_Playlist_Name]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Token">[in_Token]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="What would you like the new description to be for your selected playlist?" Title="New Playlist Description">
@@ -174,7 +164,6 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[response_Content]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[response_Status]" />
   </Sequence>
 </Activity>
