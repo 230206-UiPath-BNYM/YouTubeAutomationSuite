@@ -1,0 +1,14 @@
+﻿{
+  "snippet": {
+    "title": "Sample playlist title created via API",
+    "description": "This is a sample playlist description.",
+    "tags": [
+      "sample playlist",
+      "API call"
+    ],
+    "defaultLanguage": "en"
+  },
+  "status": {
+    "privacyStatus": "private"
+  }
+}
