@@ -1,1 +1,0 @@
-﻿Server=tcp:uipath-yas.database.windows.net,1433;Initial Catalog=yas_db;Persist Security Info=False;User ID=yaaas;Password=guessWho?;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
