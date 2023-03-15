@@ -1,11 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Create_Playlist" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Create_Playlist" this:Create_Playlist.in_playlistID="PLrH3xuQqFq0YzWthXys072XVM6OhVgiS7" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_playVideoID" Type="InArgument(x:String)" />
+    <x:Property Name="in_playlistID" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1119,1348</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>891,1348</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Create_Playlist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -92,16 +93,8 @@
       <Variable x:TypeArguments="x:String" Name="readFile" />
       <Variable x:TypeArguments="x:String" Name="reqContent" />
       <Variable x:TypeArguments="x:String" Default="https://youtube.googleapis.com/youtube/v3/playlistItems?id=PLACEHOLDER&amp;key=AIzaSyCYTu4q8uWEprdmBixv-7fmE6GQT6mKrE0" Name="reqUrl" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="itemID">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(Of String)({})" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="scg:List(x:String)" Name="itemName">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(Of String)({})" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)({})]" Name="itemID" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)({})]" Name="itemName" />
       <Variable x:TypeArguments="x:String" Name="userIn" />
       <Variable x:TypeArguments="x:String" Name="outputOptions">
         <Variable.Default>
@@ -129,6 +122,9 @@
         </InOutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_authToken">
           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="token" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_playlistID">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_playlistID" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>

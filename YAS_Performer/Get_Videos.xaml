@@ -3,11 +3,12 @@
     <x:Property Name="out_itemID" Type="InOutArgument(scg:List(x:String))" />
     <x:Property Name="out_itemName" Type="InOutArgument(scg:List(x:String))" />
     <x:Property Name="in_authToken" Type="InArgument(x:String)" />
+    <x:Property Name="in_playlistID" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1119,1745</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>891,1745</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Create_Playlist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -152,7 +153,7 @@
               <OutArgument x:TypeArguments="x:String">[url]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[url.Replace("PLACEHOLDER", "PLrH3xuQqFq0YzWthXys072XVM6OhVgiS7")]</InArgument>
+              <InArgument x:TypeArguments="x:String">[url.Replace("PLACEHOLDER", in_playlistID)]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
