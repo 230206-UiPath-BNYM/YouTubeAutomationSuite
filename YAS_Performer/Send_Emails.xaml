@@ -1,14 +1,18 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Send_Emails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Send_Emails" this:Send_Emails.in_Email_Type="Add_Video" this:Send_Emails.in_Email_To="revatureirvingg@gmail.com" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Email_Type" Type="InArgument(x:String)" />
+    <x:Property Name="in_Email_To" Type="InArgument(x:String)" />
+    <x:Property Name="in_Playlist_ID" Type="InArgument(x:String)" />
+    <x:Property Name="in_Playlist_Name" Type="InArgument(x:String)" />
+    <x:Property Name="in_Video_Name" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1041,1156</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1234,859</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Emails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <sco:Collection x:TypeArguments="x:String">
+    <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -39,10 +43,14 @@
       <x:String>UiPath.Mail.SMTP.Activities</x:String>
       <x:String>UiPath.Mail.Activities</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
-    </sco:Collection>
+      <x:String>UiPath.Mail.Activities.Utils</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+    </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="68">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -72,26 +80,167 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="559,511" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="559,794" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="variable1" />
+      <Variable x:TypeArguments="x:String" Name="html_Content" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_Email_Type]" sap:VirtualizedContainerService.HintSize="497,400" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-      <x:Null x:Key="&quot;Add_Video&quot;" />
-      <x:Null x:Key="&quot;Copy_Playlist&quot;" />
-      <x:Null x:Key="&quot;Create_Playlist&quot;" />
-      <x:Null x:Key="&quot;Delete_Playlist&quot;" />
-      <x:Null x:Key="&quot;Edit_Playlist_Description&quot;" />
-      <x:Null x:Key="&quot;Edit_Playlist_Name&quot;" />
-      <x:Null x:Key="&quot;Like_Video&quot;" />
-      <x:Null x:Key="&quot;Remove Video&quot;" />
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_Email_Type]" sap:VirtualizedContainerService.HintSize="497,491" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Switch.Default>
+        <umab:CreateHtmlContent DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_9">
+          <umab:CreateHtmlContent.HtmlContentArg>
+            <umabh:HtmlContentArgument FilePath=".data/HtmlContent0.html">
+              <umabh:HtmlContentArgument.RuntimeImages>
+                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+              </umabh:HtmlContentArgument.RuntimeImages>
+              <umabh:HtmlContentArgument.ValueMappings>
+                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+              </umabh:HtmlContentArgument.ValueMappings>
+            </umabh:HtmlContentArgument>
+          </umab:CreateHtmlContent.HtmlContentArg>
+        </umab:CreateHtmlContent>
+      </Switch.Default>
+      <umab:CreateHtmlContent x:Key="&quot;Add_Video&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_1">
+        <umab:CreateHtmlContent.HtmlContentArg>
+          <umabh:HtmlContentArgument FilePath=".data/HtmlContent0.html">
+            <umabh:HtmlContentArgument.RuntimeImages>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </umabh:HtmlContentArgument.RuntimeImages>
+            <umabh:HtmlContentArgument.ValueMappings>
+              <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                <umabh:HtmlTextValueMapping Name="video" Value="[in_Video_Name]" />
+              </scg:List>
+            </umabh:HtmlContentArgument.ValueMappings>
+          </umabh:HtmlContentArgument>
+        </umab:CreateHtmlContent.HtmlContentArg>
+      </umab:CreateHtmlContent>
+      <umab:CreateHtmlContent x:Key="&quot;Copy_Playlist&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_2">
+        <umab:CreateHtmlContent.HtmlContentArg>
+          <umabh:HtmlContentArgument FilePath=".data/HtmlContent7.html">
+            <umabh:HtmlContentArgument.RuntimeImages>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </umabh:HtmlContentArgument.RuntimeImages>
+            <umabh:HtmlContentArgument.ValueMappings>
+              <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+            </umabh:HtmlContentArgument.ValueMappings>
+          </umabh:HtmlContentArgument>
+        </umab:CreateHtmlContent.HtmlContentArg>
+      </umab:CreateHtmlContent>
+      <umab:CreateHtmlContent x:Key="&quot;Create_Playlist&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_3">
+        <umab:CreateHtmlContent.HtmlContentArg>
+          <umabh:HtmlContentArgument FilePath=".data/HtmlContent1.html">
+            <umabh:HtmlContentArgument.RuntimeImages>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </umabh:HtmlContentArgument.RuntimeImages>
+            <umabh:HtmlContentArgument.ValueMappings>
+              <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                <umabh:HtmlTextValueMapping Name="playlist_Name" Value="[in_Playlist_Name]" />
+              </scg:List>
+            </umabh:HtmlContentArgument.ValueMappings>
+          </umabh:HtmlContentArgument>
+        </umab:CreateHtmlContent.HtmlContentArg>
+      </umab:CreateHtmlContent>
+      <umab:CreateHtmlContent x:Key="&quot;Delete_Playlist&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_4">
+        <umab:CreateHtmlContent.HtmlContentArg>
+          <umabh:HtmlContentArgument FilePath=".data/HtmlContent2.html">
+            <umabh:HtmlContentArgument.RuntimeImages>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </umabh:HtmlContentArgument.RuntimeImages>
+            <umabh:HtmlContentArgument.ValueMappings>
+              <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                <umabh:HtmlTextValueMapping Name="playlist" Value="[in_Playlist_Name]" />
+              </scg:List>
+            </umabh:HtmlContentArgument.ValueMappings>
+          </umabh:HtmlContentArgument>
+        </umab:CreateHtmlContent.HtmlContentArg>
+      </umab:CreateHtmlContent>
+      <umab:CreateHtmlContent x:Key="&quot;Edit_Playlist_Description&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,152" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_5">
+        <umab:CreateHtmlContent.HtmlContentArg>
+          <umabh:HtmlContentArgument FilePath=".data/HtmlContent3.html">
+            <umabh:HtmlContentArgument.RuntimeImages>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </umabh:HtmlContentArgument.RuntimeImages>
+            <umabh:HtmlContentArgument.ValueMappings>
+              <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                <umabh:HtmlTextValueMapping Name="playlist" Value="[in_Playlist_Name]" />
+              </scg:List>
+            </umabh:HtmlContentArgument.ValueMappings>
+          </umabh:HtmlContentArgument>
+        </umab:CreateHtmlContent.HtmlContentArg>
+      </umab:CreateHtmlContent>
+      <umab:CreateHtmlContent x:Key="&quot;Edit_Playlist_Name&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,152" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_6">
+        <umab:CreateHtmlContent.HtmlContentArg>
+          <umabh:HtmlContentArgument FilePath=".data/HtmlContent4.html">
+            <umabh:HtmlContentArgument.RuntimeImages>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </umabh:HtmlContentArgument.RuntimeImages>
+            <umabh:HtmlContentArgument.ValueMappings>
+              <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                <umabh:HtmlTextValueMapping Name="playlist" Value="[in_Playlist_Name]" />
+              </scg:List>
+            </umabh:HtmlContentArgument.ValueMappings>
+          </umabh:HtmlContentArgument>
+        </umab:CreateHtmlContent.HtmlContentArg>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </umab:CreateHtmlContent>
+      <umab:CreateHtmlContent x:Key="&quot;Like_Video&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_7">
+        <umab:CreateHtmlContent.HtmlContentArg>
+          <umabh:HtmlContentArgument FilePath=".data/HtmlContent5.html">
+            <umabh:HtmlContentArgument.RuntimeImages>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </umabh:HtmlContentArgument.RuntimeImages>
+            <umabh:HtmlContentArgument.ValueMappings>
+              <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                <umabh:HtmlTextValueMapping Name="video" Value="[in_Video_Name]" />
+              </scg:List>
+            </umabh:HtmlContentArgument.ValueMappings>
+          </umabh:HtmlContentArgument>
+        </umab:CreateHtmlContent.HtmlContentArg>
+      </umab:CreateHtmlContent>
+      <umab:CreateHtmlContent x:Key="&quot;Remove Video&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_8">
+        <umab:CreateHtmlContent.HtmlContentArg>
+          <umabh:HtmlContentArgument FilePath=".data/HtmlContent6.html">
+            <umabh:HtmlContentArgument.RuntimeImages>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </umabh:HtmlContentArgument.RuntimeImages>
+            <umabh:HtmlContentArgument.ValueMappings>
+              <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                <umabh:HtmlTextValueMapping Name="video" Value="[in_Video_Name]" />
+                <umabh:HtmlTextValueMapping Name="playlist" Value="[in_Playlist_Name]" />
+              </scg:List>
+            </umabh:HtmlContentArgument.ValueMappings>
+          </umabh:HtmlContentArgument>
+        </umab:CreateHtmlContent.HtmlContentArg>
+      </umab:CreateHtmlContent>
     </Switch>
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[html_Content]" DisplayName="Send SMTP Mail Message" Email="revatureirvingg@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="497,152" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="True" Password="uljhlbljgxxvvlki" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="YAS Updates" To="[in_Email_To]">
+      <ui:SendMail.Files>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+      </ui:SendMail.Files>
+    </ui:SendMail>
   </Sequence>
 </Activity>
