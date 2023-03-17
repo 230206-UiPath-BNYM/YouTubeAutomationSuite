@@ -5,11 +5,12 @@
     <x:Property Name="in_Playlist_ID" Type="InArgument(x:String)" />
     <x:Property Name="in_Playlist_Name" Type="InArgument(x:String)" />
     <x:Property Name="in_Video_Name" Type="InArgument(x:String)" />
+    <x:Property Name="in_Channel" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234,859</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1166,1150</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Emails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -51,60 +52,64 @@
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <scg:List x:TypeArguments="AssemblyReference" Capacity="68">
-      <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
-      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
-      <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Drawing</AssemblyReference>
-      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
-      <AssemblyReference>System.Xaml</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
-      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
-      <AssemblyReference>System.ObjectModel</AssemblyReference>
-      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>System.Security.Permissions</AssemblyReference>
-      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
-      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
-      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
-      <AssemblyReference>System.Memory.Data</AssemblyReference>
-      <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
-      <AssemblyReference>System.Console</AssemblyReference>
-      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
-      <AssemblyReference>System.ComponentModel</AssemblyReference>
-      <AssemblyReference>System.Memory</AssemblyReference>
-      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="559,794" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="559,818" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="html_Content" />
+      <Variable x:TypeArguments="x:Object" Name="channel_Name" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_Email_Type]" sap:VirtualizedContainerService.HintSize="497,491" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_Email_Type]" sap:VirtualizedContainerService.HintSize="497,515" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <Switch.Default>
         <umab:CreateHtmlContent DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_9">
           <umab:CreateHtmlContent.HtmlContentArg>
@@ -173,7 +178,7 @@
           </umabh:HtmlContentArgument>
         </umab:CreateHtmlContent.HtmlContentArg>
       </umab:CreateHtmlContent>
-      <umab:CreateHtmlContent x:Key="&quot;Edit_Playlist_Description&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,152" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_5">
+      <umab:CreateHtmlContent x:Key="&quot;Edit_Playlist_Description&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_5">
         <umab:CreateHtmlContent.HtmlContentArg>
           <umabh:HtmlContentArgument FilePath=".data/HtmlContent3.html">
             <umabh:HtmlContentArgument.RuntimeImages>
@@ -187,7 +192,7 @@
           </umabh:HtmlContentArgument>
         </umab:CreateHtmlContent.HtmlContentArg>
       </umab:CreateHtmlContent>
-      <umab:CreateHtmlContent x:Key="&quot;Edit_Playlist_Name&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,152" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_6">
+      <umab:CreateHtmlContent x:Key="&quot;Edit_Playlist_Name&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_6">
         <umab:CreateHtmlContent.HtmlContentArg>
           <umabh:HtmlContentArgument FilePath=".data/HtmlContent4.html">
             <umabh:HtmlContentArgument.RuntimeImages>
@@ -231,6 +236,20 @@
               <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
                 <umabh:HtmlTextValueMapping Name="video" Value="[in_Video_Name]" />
                 <umabh:HtmlTextValueMapping Name="playlist" Value="[in_Playlist_Name]" />
+              </scg:List>
+            </umabh:HtmlContentArgument.ValueMappings>
+          </umabh:HtmlContentArgument>
+        </umab:CreateHtmlContent.HtmlContentArg>
+      </umab:CreateHtmlContent>
+      <umab:CreateHtmlContent x:Key="&quot;Subscribe&quot;" DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,153" HtmlContent="[html_Content]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_10">
+        <umab:CreateHtmlContent.HtmlContentArg>
+          <umabh:HtmlContentArgument FilePath=".data/HtmlContent5.html">
+            <umabh:HtmlContentArgument.RuntimeImages>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </umabh:HtmlContentArgument.RuntimeImages>
+            <umabh:HtmlContentArgument.ValueMappings>
+              <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                <umabh:HtmlTextValueMapping Name="channel" Value="[channel_Name]" />
               </scg:List>
             </umabh:HtmlContentArgument.ValueMappings>
           </umabh:HtmlContentArgument>

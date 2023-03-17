@@ -1,0 +1,8 @@
+﻿{
+  "snippet": {
+    "resourceId": {
+      "kind": "youtube#channel",
+      "channelId": "CHANNEL_ID"
+    }
+  }
+}
