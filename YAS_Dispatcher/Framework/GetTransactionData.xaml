@@ -90,20 +90,20 @@
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="GetTransactionData" sap:VirtualizedContainerService.HintSize="657,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="GetTransactionData" sap:VirtualizedContainerService.HintSize="668,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">520,32.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">520,70 440,70</av:PointCollection>
-        <x:Double x:Key="Width">623</x:Double>
+        <x:Double x:Key="Width">634</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID8</x:Reference>
+      <x:Reference>__ReferenceID0</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID8">
+    <FlowStep x:Name="__ReferenceID0">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">240,44</av:Point>
@@ -111,7 +111,7 @@
           <av:PointCollection x:Key="ConnectorLocation">240,70 197,70 197,29.039999999999992 67.5,29.039999999999992 67.5,80</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="334,292" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Task to perform:" OptionsString="Create Playlist;Delete Playlist;Merge Playlists;List Videos;Modify Playlist;Like Video" Title="What would you like to do?">
+      <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Task to perform:" OptionsString="Create Playlist;Delete Playlist;Merge Playlists;List Videos;Modify Playlist;Like Video" Title="What would you like to do?">
         <ui:InputDialog.Result>
           <OutArgument x:TypeArguments="x:String">[out_taskToPerform]</OutArgument>
         </ui:InputDialog.Result>
@@ -122,9 +122,9 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:InputDialog>
       <FlowStep.Next>
-        <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID0" DisplayName="Flow Switch" Expression="[out_taskToPerform]" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
+        <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID1" DisplayName="Flow Switch" Expression="[out_taskToPerform]" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
           <FlowSwitch.Default>
-            <FlowStep x:Name="__ReferenceID1">
+            <FlowStep x:Name="__ReferenceID2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">0,354</av:Point>
@@ -148,12 +148,12 @@
               <av:PointCollection x:Key="Create PlaylistConnector">102.5,80 102.5,61.03999999999999 161.5,61.03999999999999 161.5,191.04 380.5,191.04 380.5,220 400,220</av:PointCollection>
               <av:PointCollection x:Key="Delete PlaylistConnector">120,101.75 155.5,101.75 155.5,213.04 375.5,213.04 375.5,270 400,270</av:PointCollection>
               <av:PointCollection x:Key="Merge PlaylistsConnector">120,123.5 150.5,123.5 150.5,235.04 369.5,235.04 369.5,320 400,320</av:PointCollection>
-              <av:PointCollection x:Key="List VideosConnector">120,145.25 144.5,145.25 144.5,255.04 364.5,255.04 364.5,370 400,370</av:PointCollection>
+              <av:PointCollection x:Key="List VideosConnector">120,145.25 144.5,145.25 144.5,257.03999999999996 364.5,257.03999999999996 364.5,370 400,370</av:PointCollection>
               <av:PointCollection x:Key="Modify PlaylistConnector">102.5,167 102.5,180.04 139.5,180.04 139.5,279.03999999999996 358.5,279.03999999999996 358.5,420 400,420</av:PointCollection>
               <av:PointCollection x:Key="Like VideoConnector">85,167 85,189.04 133.5,189.04 133.5,302.03999999999996 352.5,302.03999999999996 352.5,470 400,470</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <FlowStep x:Key="Create Playlist" x:Name="__ReferenceID2">
+          <FlowStep x:Key="Create Playlist" x:Name="__ReferenceID3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">400,194</av:Point>
@@ -171,7 +171,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
           </FlowStep>
-          <FlowStep x:Key="Delete Playlist" x:Name="__ReferenceID3">
+          <FlowStep x:Key="Delete Playlist" x:Name="__ReferenceID4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">400,244</av:Point>
@@ -189,7 +189,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
           </FlowStep>
-          <FlowStep x:Key="Merge Playlists" x:Name="__ReferenceID4">
+          <FlowStep x:Key="Merge Playlists" x:Name="__ReferenceID5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">400,294</av:Point>
@@ -207,11 +207,12 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
           </FlowStep>
-          <FlowStep x:Key="List Videos" x:Name="__ReferenceID5">
+          <FlowStep x:Key="List Videos" x:Name="__ReferenceID6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">400,344</av:Point>
                 <av:Size x:Key="ShapeSize">200,52</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">600,370 630,370 630,126 340,126 340,96</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Selector_ListVideos.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="TaskSelectors\Selector_ListVideos.xaml">
@@ -224,8 +225,11 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
+            <FlowStep.Next>
+              <x:Reference>__ReferenceID0</x:Reference>
+            </FlowStep.Next>
           </FlowStep>
-          <FlowStep x:Key="Modify Playlist" x:Name="__ReferenceID6">
+          <FlowStep x:Key="Modify Playlist" x:Name="__ReferenceID7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">400,394</av:Point>
@@ -243,7 +247,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
           </FlowStep>
-          <FlowStep x:Key="Like Video" x:Name="__ReferenceID7">
+          <FlowStep x:Key="Like Video" x:Name="__ReferenceID8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">400,444</av:Point>
@@ -264,7 +268,6 @@
         </FlowSwitch>
       </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID3</x:Reference>
@@ -272,5 +275,6 @@
     <x:Reference>__ReferenceID5</x:Reference>
     <x:Reference>__ReferenceID6</x:Reference>
     <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
   </Flowchart>
 </Activity>
