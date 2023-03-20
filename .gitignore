@@ -4,6 +4,4 @@
 # Exclude local dependencies, caches and project settings
 **/.local
 
-**/*.xls
-**/*.xlsx
 db_creds.txt
