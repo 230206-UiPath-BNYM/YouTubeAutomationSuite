@@ -5,10 +5,10 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>889,1169</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>910,905</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OAuthGen_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="27">
+    <scg:List x:TypeArguments="x:String" Capacity="54">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -36,6 +36,9 @@
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>UiPath.UIAutomationCore.Contracts</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -72,28 +75,37 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OAuthGen" sap:VirtualizedContainerService.HintSize="529,840" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="OAuthGen" sap:VirtualizedContainerService.HintSize="546,840" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="467,729" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://developers.google.com/oauthplayground/#step2&amp;apisSelect=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube&amp;auth_code=4%2F0AWtgzh6VP_AGH4oxuBuVTwz8OEA2vgJNu_xHIv3xutqvUnbqls8i2Iwkav8ICPAZFpR91g&amp;refresh_token=1%2F%2F04tAnoLIWfig7CgYIARAAGAQSNwF-L9IrgDI3yt9GtkbvNu53TOYuqjrGyEsWw9z1difLBviJVCjzMAortAJBfUKS9_F33r_Yl8I&amp;access_token_field=ya29.a0AVvZVsoovpAegEhgBuCttDF6iD6CagToCWgRnrJ4KgK2xlVxYV0VPRvUNxevkCm84tc0320I-ikEW1naqi5jLO15VeJq69ayBhwzXE4MCRnHDW1AND3LDZ9iUK2GFYKmMNCnE1Fk3cih1YThSEoS-nE7-pKVaCgYKAZsSARESFQGbdwaINu0ScTvHFDR2cCP8k_T47A0163&amp;url=https%3A%2F%2F&amp;content_type=application%2Fjson&amp;http_method=GET&amp;useDefaultOauthCred=checked&amp;oauthEndpointSelect=Google&amp;oauthAuthEndpointValue=https%3A%2F%2Faccounts.google.com%2Fo%2Foauth2%2Fv2%2Fauth&amp;oauthTokenEndpointValue=https%3A%2F%2Foauth2.googleapis.com%2Ftoken&amp;oauthClientId=5635649722-95b8i513df6no3ho7rbnc0c8laortuoh.apps.googleusercontent.com&amp;expires_in=3598&amp;oauthClientSecret=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&amp;access_token_issue_date=1678477570&amp;for_access_token=ya29.a0AVvZVsoovpAegEhgBuCttDF6iD6CagToCWgRnrJ4KgK2xlVxYV0VPRvUNxevkCm84tc0320I-ikEW1naqi5jLO15VeJq69ayBhwzXE4MCRnHDW1AND3LDZ9iUK2GFYKmMNCnE1Fk3cih1YThSEoS-nE7-pKVaCgYKAZsSARESFQGbdwaINu0ScTvHFDR2cCP8k_T47A0163&amp;includeCredentials=checked&amp;accessTokenType=bearer&amp;autoRefreshToken=checked&amp;accessType=offline&amp;prompt=consent&amp;response_type=code&amp;wrapLines=on">
+    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="484,729" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://developers.google.com/oauthplayground/#step2&amp;apisSelect=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&amp;auth_code=4%2F0AWtgzh6EGBdCFgob4OKnShiWQjJcXweVppf_OMdV21i819BFw_t-qk_0OJhphFMjNsMINw&amp;refresh_token=1%2F%2F04bqxI9MBfMQXCgYIARAAGAQSNwF-L9IrRDHRMsEu-NOVSgj6GsTSNz6CzD3of-rn-YXYpjmI6IAlKkqiKL3fkBjcAaX7sYu4tNc&amp;access_token_field=ya29.a0AVvZVsrOCQ1PwKyjtCggH0pZ_Y-vxQeWUtTlj-lI178TYTp-tMkM9eM5m0nMPKIPb_JUeWXYhZ73ltIrf1AuT2ChdMyyvESGUuLSmdAPUng1Z_7kfCtRC1zLp8hKwNVjsUTuUd_wgS2e8EHcUu-T8FGzPaKYaCgYKAQASARESFQGbdwaIVcSdJSAMfgOZ_4Tmb-eOCg0163&amp;url=https%3A%2F%2F&amp;content_type=application%2Fjson&amp;http_method=GET&amp;useDefaultOauthCred=checked&amp;oauthEndpointSelect=Google&amp;oauthAuthEndpointValue=https%3A%2F%2Faccounts.google.com%2Fo%2Foauth2%2Fv2%2Fauth&amp;oauthTokenEndpointValue=https%3A%2F%2Foauth2.googleapis.com%2Ftoken&amp;oauthClientId=5635649722-95b8i513df6no3ho7rbnc0c8laortuoh.apps.googleusercontent.com&amp;expires_in=3598&amp;oauthClientSecret=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&amp;access_token_issue_date=1679326113&amp;for_access_token=ya29.a0AVvZVsrOCQ1PwKyjtCggH0pZ_Y-vxQeWUtTlj-lI178TYTp-tMkM9eM5m0nMPKIPb_JUeWXYhZ73ltIrf1AuT2ChdMyyvESGUuLSmdAPUng1Z_7kfCtRC1zLp8hKwNVjsUTuUd_wgS2e8EHcUu-T8FGzPaKYaCgYKAQASARESFQGbdwaIVcSdJSAMfgOZ_4Tmb-eOCg0163&amp;includeCredentials=checked&amp;accessTokenType=bearer&amp;autoRefreshToken=checked&amp;accessType=offline&amp;prompt=consent&amp;response_type=code&amp;wrapLines=on">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,627" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,627" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Delay Duration="00:00:00.5000000" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
-            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  access_token_fie...'" sap:VirtualizedContainerService.HintSize="338,107" sap2010:WorkflowViewState.IdRef="GetValue_1">
+            <Delay Duration="00:00:00.5000000" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  access_token_fie...'" sap:VirtualizedContainerService.HintSize="388,107" sap2010:WorkflowViewState.IdRef="GetValue_1">
               <ui:GetValue.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0cc3daf2-3fee-4f5b-a003-a1444ac5daa9" InformativeScreenshot="eb28cff5b08d37e099eab903a32589f6" Selector="&lt;webctrl id='access_token_field' tag='INPUT' /&gt;">
                   <ui:Target.TimeoutMS>
@@ -108,8 +120,8 @@
                 <OutArgument x:TypeArguments="x:String">[out_accessToken]</OutArgument>
               </ui:GetValue.Value>
             </ui:GetValue>
-            <ui:CloseWindow Selector="{x:Null}" TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window 'msedge.exe OAuth'" sap:VirtualizedContainerService.HintSize="338,107" sap2010:WorkflowViewState.IdRef="CloseWindow_1" InformativeScreenshot="9eab34428319de94f9bda975334912db" WaitForReady="INTERACTIVE" />
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Access Token = &quot; + out_accessToken]" />
+            <ui:CloseWindow Selector="{x:Null}" TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window 'msedge.exe OAuth'" sap:VirtualizedContainerService.HintSize="388,107" sap2010:WorkflowViewState.IdRef="CloseWindow_1" InformativeScreenshot="9eab34428319de94f9bda975334912db" WaitForReady="INTERACTIVE" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Access Token = &quot; + out_accessToken]" />
           </Sequence>
         </ActivityAction>
       </ui:OpenBrowser.Body>
