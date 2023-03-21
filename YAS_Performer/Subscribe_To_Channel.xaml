@@ -13,7 +13,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2774,1970</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>900,2366</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Subscribe_To_Channel_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -110,7 +110,7 @@
       <AssemblyReference>System.Collections</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Subscribes to Channel&#xA; *Arguments&#xA;&#xA;    In arguments&#xA;        -Token for OAUTH2.0 Requests (if empty rerun OAUTH GEN)&#xA;        -Channel_Name to help find the channel ID (May not be needed if channel ID can be provided)&#xA;        -Channel_ID to subscribe to the channel using its ID\&#xD;&#xA;&#xD;&#xA;    Out arguments&#xD;&#xA;        -out_Channel_Name sends the name so it can be included in a email for a user for updates&#xD;&#xA;        -out_Email_Type sends string to Send_Email as a switch case to let it know what email to send. &#xD;&#xA;" DisplayName="Subscribe_To_Channel" sap:VirtualizedContainerService.HintSize="572,1905" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Subscribes to Channel&#xA; *Arguments&#xA;&#xA;    In arguments&#xA;        -Token for OAUTH2.0 Requests (if empty rerun OAUTH GEN)&#xA;        -Channel_Name to help find the channel ID (May not be needed if channel ID can be provided)&#xA;        -Channel_ID to subscribe to the channel using its ID\&#xA;&#xA;    Out arguments&#xA;        -out_Channel_Name sends the name so it can be included in a email for a user for updates&#xA;        -out_Email_Type sends string to Send_Email as a switch case to let it know what email to send. &#xA;" DisplayName="Subscribe_To_Channel" sap:VirtualizedContainerService.HintSize="572,2301" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Subscribe_HTTP" />
       <Variable x:TypeArguments="x:String" Name="response_Content" />
@@ -123,6 +123,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Start Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[&quot;Subscribe to Channel started&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Info in_Channel_ID = &quot; + in_Channel_ID + &quot; in_Token = &quot; + in_Token]" />
     <ui:ReadTextFile File="{x:Null}" Content="[Subscribe_HTTP]" DisplayName="Read Text File" FileName="Subscribe_HTTP_Body\Subscribe.txt" sap:VirtualizedContainerService.HintSize="510,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
     <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
@@ -194,5 +196,6 @@
         </Sequence>
       </If.Else>
     </If>
+    <ui:LogMessage DisplayName="Log End Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Subscribed to Channel Updated&quot;]" />
   </Sequence>
 </Activity>
