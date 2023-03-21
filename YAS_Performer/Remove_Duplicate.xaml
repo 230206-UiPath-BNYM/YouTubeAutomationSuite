@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Remove_Duplicate" this:Remove_Duplicate.in_playlistID="PLrH3xuQqFq0YzWthXys072XVM6OhVgiS7" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uasc="clr-namespace:UiPath.Activities.System.Collections;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_playlistID" Type="InArgument(x:String)" />
+    <x:Property Name="in_AuthTok" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>901,2433</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>992,2381</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Remove_Duplicate_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -82,24 +83,12 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Remove_Duplicate" sap:VirtualizedContainerService.HintSize="596,2368" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Remove_Duplicate" sap:VirtualizedContainerService.HintSize="692,2316" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)({})]" Name="itemList" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="nameList">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(Of String)({})" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="scg:List(x:String)" Name="vidList">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(Of String)({})" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="scg:List(x:String)" Name="distinctList">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(Of String)({})" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)({})]" Name="nameList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)({})]" Name="vidList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)({})]" Name="distinctList" />
       <Variable x:TypeArguments="x:Int32" Name="idx" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="vidCopy" />
     </Sequence.Variables>
@@ -108,7 +97,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_Videos.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="534,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Get_Videos.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_Videos.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="630,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Get_Videos.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_itemID">
           <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="itemList" />
@@ -116,18 +105,18 @@
         <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_itemName">
           <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="nameList" />
         </InOutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_authToken">
-          <Literal x:TypeArguments="x:String" Value="" />
-        </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_playlistID">
           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_playlistID" />
         </InArgument>
         <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_itemVidID">
           <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="vidList" />
         </InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_AuthTok">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_AuthTok" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Assign sap:VirtualizedContainerService.HintSize="534,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="630,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[distinctList]</OutArgument>
       </Assign.To>
@@ -135,15 +124,15 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[vidList.Distinct().ToList()]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While" sap:VirtualizedContainerService.HintSize="534,2003" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[not distinctList.Count() = vidList.Count()]" DisplayName="While" sap:VirtualizedContainerService.HintSize="630,1930" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="498,1837" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="594,1764" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="436,61" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="scg:List(x:String)">[vidCopy]</OutArgument>
             </Assign.To>
@@ -151,30 +140,30 @@
               <InArgument x:TypeArguments="scg:List(x:String)">[vidList.Copy()]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="436,479" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[distinctList]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="532,452" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[distinctList]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="currVid" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,355" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,328" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uasc:RemoveFromCollection x:TypeArguments="x:String" Index="{x:Null}" Collection="[vidList]" DisplayName="Remove from collection" sap:VirtualizedContainerService.HintSize="338,244" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_2" Item="[currVid]" RemoveAllElements="False" Result="[vidList]" />
+                  <uasc:RemoveFromCollection x:TypeArguments="x:String" Index="{x:Null}" Collection="[vidList]" DisplayName="Remove from collection" sap:VirtualizedContainerService.HintSize="388,217" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_2" Item="[currVid]" RemoveAllElements="False" Result="[vidList]" />
                 </Sequence>
               </ActivityAction>
             </ui:ForEach.Body>
           </ui:ForEach>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="436,550" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[vidList]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="532,592" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[vidList]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="currVid" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,426" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,468" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="itemID" />
                   </Sequence.Variables>
@@ -183,7 +172,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[idx]</OutArgument>
                     </Assign.To>
@@ -191,7 +180,7 @@
                       <InArgument x:TypeArguments="x:Int32">[vidCopy.IndexOf(currVid)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[itemID]</OutArgument>
                     </Assign.To>
@@ -199,21 +188,17 @@
                       <InArgument x:TypeArguments="x:String">[itemList(idx)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Remove_Video.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Remove_Video.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Remove_Video.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Remove_Video.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_playVideoID">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="itemID" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_playlistID">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_playlistID" />
-                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_playVideoID">[itemID]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_playlistID">[in_playlistID]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </Sequence>
               </ActivityAction>
             </ui:ForEach.Body>
           </ui:ForEach>
-          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="436,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="532,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -235,7 +220,7 @@
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_Videos.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Get_Videos.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_Videos.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Get_Videos.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_itemID">
                 <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="itemList" />
@@ -243,18 +228,18 @@
               <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_itemName">
                 <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="nameList" />
               </InOutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_authToken">
-                <Literal x:TypeArguments="x:String" Value="" />
-              </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_playlistID">
                 <Literal x:TypeArguments="x:String">PLrH3xuQqFq0YzWthXys072XVM6OhVgiS7</Literal>
               </InArgument>
               <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_itemVidID">
                 <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="vidList" />
               </InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_AuthTok">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_AuthTok" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <Assign sap:VirtualizedContainerService.HintSize="436,61" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_6">
             <Assign.To>
               <OutArgument x:TypeArguments="scg:List(x:String)">[distinctList]</OutArgument>
             </Assign.To>
@@ -262,12 +247,8 @@
               <InArgument x:TypeArguments="scg:List(x:String)">[vidList.Distinct().ToList()]</InArgument>
             </Assign.Value>
           </Assign>
-          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[vidList.Count().ToString + &quot;, &quot; + distinctList.Count().ToString]" />
         </Sequence>
       </ui:InterruptibleWhile.Body>
-      <ui:InterruptibleWhile.Condition>
-        <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="not distinctList.Count() = vidList.Count()" />
-      </ui:InterruptibleWhile.Condition>
     </ui:InterruptibleWhile>
   </Sequence>
 </Activity>

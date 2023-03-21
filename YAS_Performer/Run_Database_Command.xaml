@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>390,550</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>786,798</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Run_Database_Command_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -84,7 +84,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Run_Database_Command" sap:VirtualizedContainerService.HintSize="400,485" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Run_Database_Command" sap:VirtualizedContainerService.HintSize="450,546" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="db_con" />
       <Variable x:TypeArguments="x:String" Name="dbConStr" />
@@ -94,13 +94,20 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile File="{x:Null}" Content="[dbConStr]" DisplayName="Read Text File" FileName="db_creds.txt" sap:VirtualizedContainerService.HintSize="338,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[dbConStr]" DatabaseConnection="[db_con]" />
-    <ui:ExecuteNonQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" AffectedRecords="[out_numRowsAffected]" CommandType="Text" DisplayName="Run command" ExistingDbConnection="[db_con]" sap:VirtualizedContainerService.HintSize="338,89" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[in_command]">
+    <ui:GetRobotAsset AssetName="Database Connection String" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+      <ui:GetRobotAsset.TimeoutMS>
+        <InArgument x:TypeArguments="x:Int32" />
+      </ui:GetRobotAsset.TimeoutMS>
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[dbConStr]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[dbConStr]" DatabaseConnection="[db_con]" />
+    <ui:ExecuteNonQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" AffectedRecords="[out_numRowsAffected]" CommandType="Text" DisplayName="Run command" ExistingDbConnection="[db_con]" sap:VirtualizedContainerService.HintSize="388,89" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[in_command]">
       <ui:ExecuteNonQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteNonQuery.Parameters>
     </ui:ExecuteNonQuery>
-    <ui:DatabaseDisconnect DatabaseConnection="[db_con]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
+    <ui:DatabaseDisconnect DatabaseConnection="[db_con]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
   </Sequence>
 </Activity>
