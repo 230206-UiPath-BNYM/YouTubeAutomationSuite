@@ -1,14 +1,13 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Create_Playlist" this:Create_Playlist.in_Playlist_Name="Test44" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Create_Playlist" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Token" Type="InArgument(x:String)" />
-    <x:Property Name="out_Playlist_Name" Type="OutArgument(x:String)" />
     <x:Property Name="in_Playlist_Name" Type="InArgument(x:String)" />
     <x:Property Name="out_Email_Type" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>906,2345</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1881,2905</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Create_Playlist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -44,6 +43,11 @@
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>UiPath.Database</x:String>
       <x:String>UiPath.Database.Activities</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -89,16 +93,29 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Create_Playlist&#xA; *Arguments&#xA;&#xA;    In arguments&#xA;        -Token for OAUTH2.0 Requests (if empty rerun OAUTH GEN)&#xA;        -in_Playlist_Name -&gt; is the name for the new playlist. &#xA;&#xA;    Out arguments&#xA;        -out_Playlist_Name sends the name so it can be included in a email for a user for updates&#xA;        -out_Email_Type sends string to Send_Email as a switch case to let it know what email to send. &#xA;" DisplayName="Create_Playlist" sap:VirtualizedContainerService.HintSize="496,2280" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Create_Playlist&#xA;&#xA;TESTING &gt;&gt;&gt; Just add a string name to in_Playlist_Name arugment &#xA;Example in_Playlist_Name = &quot;TEST11&quot;&#xA;&#xA;&#xA; *Arguments&#xA;&#xA;    In arguments&#xA;        -Token for OAUTH2.0 Requests (if empty rerun OAUTH GEN)&#xA;        -in_Playlist_Name -&gt; is the name for the new playlist. &#xA;&#xA;    Out arguments&#xA;        -out_Playlist_Name sends the name so it can be included in a email for a user for updates&#xA;        -out_Email_Type sends string to Send_Email as a switch case to let it know what email to send. &#xA;" DisplayName="Create_Playlist" sap:VirtualizedContainerService.HintSize="572,2840" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="readText" />
       <Variable x:TypeArguments="x:Int32" Name="response_code" />
       <Variable x:TypeArguments="x:String" Name="response_ct" />
-      <Variable x:TypeArguments="x:String" Name="playlist_Name" />
       <Variable x:TypeArguments="x:String" Name="sqlCommand" />
       <Variable x:TypeArguments="x:Int32" Name="idx" />
+      <Variable x:TypeArguments="x:String" Name="new_Playlist_ID" />
+      <Variable x:TypeArguments="njl:JObject" Name="JsonObject" />
+      <Variable x:TypeArguments="x:String" Name="privacy" />
+      <Variable x:TypeArguments="x:String" Name="description" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -106,7 +123,13 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[in_Token = &quot;&quot;]" DisplayName="If for testing token after test" sap:VirtualizedContainerService.HintSize="434,431" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[in_Token = &quot;&quot;]" DisplayName="If for testing token after test" sap:VirtualizedContainerService.HintSize="510,52" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="376,201" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
@@ -131,8 +154,8 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Start Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;Create_Playlist Started&quot;]" />
-    <ui:LogMessage DisplayName="Log Variable Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Info in_Playlist_Name = &quot; + in_Playlist_Name + &quot; in_Token = &quot; + in_Token]">
+    <ui:LogMessage DisplayName="Log Start Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;Create_Playlist Started&quot;]" />
+    <ui:LogMessage DisplayName="Log Variable Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Info in_Playlist_Name = &quot; + in_Playlist_Name + &quot; in_Token = &quot; + in_Token]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -140,8 +163,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:ReadTextFile File="{x:Null}" Content="[readText]" DisplayName="Read Text File" FileName="Playlist_HTTP_Body\PostPlaylist.txt" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:ReadTextFile File="{x:Null}" Content="[readText]" DisplayName="Read Text File" FileName="Playlist_HTTP_Body\PostPlaylist.txt" sap:VirtualizedContainerService.HintSize="510,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[readText]</OutArgument>
       </Assign.To>
@@ -149,7 +172,7 @@
         <InArgument x:TypeArguments="x:String">[readText.Replace("Sample playlist title created via API", in_Playlist_Name)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="OAuth2" Body="[readText]" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2Cstatus&amp;key=AIzaSyCYTu4q8uWEprdmBixv-7fmE6GQT6mKrE0 HTTP/1.1" sap:VirtualizedContainerService.HintSize="434,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth2Token="[in_Token]" Result="[response_ct]" StatusCode="[response_code]" TimeoutMS="6000">
+    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="OAuth2" Body="[readText]" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2Cstatus&amp;key=AIzaSyCYTu4q8uWEprdmBixv-7fmE6GQT6mKrE0 HTTP/1.1" sap:VirtualizedContainerService.HintSize="510,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth2Token="[in_Token]" Result="[response_ct]" StatusCode="[response_code]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -178,40 +201,77 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[response_code.ToString]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[response_ct]" />
-    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[sqlCommand]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">INSERT INTO Playlists VALUES (</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[out_Playlist_Name]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[playlist_Name]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[out_Email_Type]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">Create_Playlist</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:LogMessage DisplayName="Log Start Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Create_Playlist Ended&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Run_Database_Command.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Run_Database_Command.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_command">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="sqlCommand" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="out_numRowsAffected" />
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[response_code.ToString]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[response_ct]" />
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[JsonObject]" JsonString="[response_ct]" />
+    <If Condition="[response_code = 200]" sap:VirtualizedContainerService.HintSize="510,1273" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="476,943" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[new_Playlist_ID]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[JsonObject("id").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[description]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[JsonObject("snippet")("description").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[privacy]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[JsonObject("status")("privacyStatus").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[sqlCommand]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["INSERT INTO Playlists VALUES ('" + new_Playlist_ID + "' , '" + in_Playlist_Name + "' , '" + description + "' , '" + privacy + "')"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[out_Email_Type]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">Create_Playlist</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Run_Database_Command.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Run_Database_Command.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_command">[sqlCommand]</InArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="out_numRowsAffected" />
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;200 response and SQL Command to run &quot; + sqlCommand]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[&quot;Error did not receive valid 200 response for Create_Playlist&quot;]" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Start Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Create_Playlist Ended&quot;]" />
   </Sequence>
 </Activity>
