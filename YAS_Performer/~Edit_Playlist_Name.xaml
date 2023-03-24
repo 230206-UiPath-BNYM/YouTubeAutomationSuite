@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Edit_Playlist_Name" this:Edit_Playlist_Name.in_Playlist_ID="PLrH3xuQqFq0bqHITh019trIWhJOMBKWCC" this:Edit_Playlist_Name.in_Playlist_Description="TEST3" this:Edit_Playlist_Name.in_Playlist_Name="edit_playlist succest test2" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Edit_Playlist_Name" this:Edit_Playlist_Name.in_Playlist_ID="PLrH3xuQqFq0bqHITh019trIWhJOMBKWCC" this:Edit_Playlist_Name.in_Playlist_Description="TEST10" this:Edit_Playlist_Name.in_Playlist_Name="edit_playlist succest test10" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Token" Type="InArgument(x:String)" />
     <x:Property Name="in_Playlist_ID" Type="InArgument(x:String)" />
@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1305,3382</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1305,3414</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Edit_Playlist_Name_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -101,9 +101,10 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Collections.Specialized</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Edit_Playlist_Name&#xA;&#xA;Arguments &#xA;    In&#xA;       *in_Token -&gt; OAUTH2.0 token for HTTPS request&#xA;       *in_Playlist_ID -&gt; Playlist ID to edit&#xA;       *in_Playlist_Description -&gt; Old description thats need to transfer over after edit&#xA;       *in_Playlist_Name -&gt; New playlist name sent to HTTPS body request&#xA;    &#xA;     Out&#xA;       *out_Email_Type -&gt; String to tell Send_Email.xaml which email type to use for updates&#xA;&#xA;TEST DATA = " DisplayName="Edit_Playlist_Name" sap:VirtualizedContainerService.HintSize="572,3317" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Edit_Playlist_Name&#xA;&#xA;Arguments &#xA;    In&#xA;       *in_Token -&gt; OAUTH2.0 token for HTTPS request&#xA;       *in_Playlist_ID -&gt; Playlist ID to edit&#xA;       *in_Playlist_Description -&gt; Old description thats need to transfer over after edit&#xA;       *in_Playlist_Name -&gt; New playlist name sent to HTTPS body request&#xA;    &#xA;     Out&#xA;       *out_Email_Type -&gt; String to tell Send_Email.xaml which email type to use for updates&#xA;&#xA;TEST DATA = " DisplayName="Edit_Playlist_Name" sap:VirtualizedContainerService.HintSize="572,3349" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="Playlist_Dict" />
       <Variable x:TypeArguments="x:String" Name="edit_Playlist_Name" />
