@@ -3,11 +3,12 @@
     <x:Property Name="in_playlistID" Type="InArgument(x:String)" />
     <x:Property Name="in_videoID" Type="InArgument(x:String)" />
     <x:Property Name="in_AuthTok" Type="InArgument(x:String)" />
+    <x:Property Name="out_emailNote" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>960,1587</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>850,1709</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Create_Playlist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -102,7 +103,7 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add_Video" sap:VirtualizedContainerService.HintSize="496,1522" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add_Video" sap:VirtualizedContainerService.HintSize="496,1644" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="reqCode" />
       <Variable x:TypeArguments="x:String" Name="token" />
@@ -114,18 +115,10 @@
       <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)({})]" Name="vidID" />
       <Variable x:TypeArguments="x:Int32" Name="idx" />
       <Variable x:TypeArguments="x:String" Name="title" />
-      <Variable x:TypeArguments="x:String" Name="sqlQueryPlaylist">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">SELECT * FROM Playlists</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="SELECT * FROM Playlists" Name="sqlQueryPlaylist" />
       <Variable x:TypeArguments="sd:DataTable" Name="playlistsDt" />
       <Variable x:TypeArguments="x:Int32" Name="rowIdx" />
-      <Variable x:TypeArguments="x:String" Name="sqlQueryVideo">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">SELECT * FROM Videos</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="SELECT * FROM Videos" Name="sqlQueryVideo" />
       <Variable x:TypeArguments="sd:DataTable" Name="videosDt" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -204,12 +197,8 @@
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Run_Database_Query.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Run_Database_Query.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_query">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="sqlQueryPlaylist" />
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_result">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="playlistsDt" />
-        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_query">[sqlQueryPlaylist]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_result">[playlistsDt]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[playlistsDt]" DisplayName="Find Playlist ID for DB" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="yt_playlist_id" LookupValue="[in_playlistID]" RowIndex="[rowIdx]">
@@ -242,6 +231,14 @@
         <OutArgument x:TypeArguments="x:Int32" x:Key="out_numRowsAffected" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_emailNote]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">Add_Video</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[reqCode.ToString]" />
   </Sequence>
 </Activity>
