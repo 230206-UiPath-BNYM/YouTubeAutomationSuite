@@ -3,11 +3,12 @@
     <x:Property Name="in_playlistIDFrom" Type="InArgument(x:String)" />
     <x:Property Name="in_playlistIDTo" Type="InArgument(x:String)" />
     <x:Property Name="in_AuthTok" Type="InArgument(x:String)" />
+    <x:Property Name="out_emailNote" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>828,798</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>850,999</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Copy_Playlist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -78,7 +79,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Copy_Playlist" sap:VirtualizedContainerService.HintSize="462,448" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Copy_Playlist" sap:VirtualizedContainerService.HintSize="496,570" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)({})]" Name="nameList" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)({})]" Name="idList" />
@@ -90,7 +91,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_Videos.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="400,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Get_Videos.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_Videos.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Get_Videos.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_itemID">[idList]</InOutArgument>
         <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_itemName">[nameList]</InOutArgument>
@@ -99,7 +100,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_AuthTok">[in_AuthTok]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[idx]" DisplayName="For each video in FROM playlist add the video to TO playlist" sap:VirtualizedContainerService.HintSize="400,52" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[vidList]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[idx]" DisplayName="For each video in FROM playlist add the video to TO playlist" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[vidList]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
@@ -128,6 +129,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="400,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Videos from playlist &quot; + in_playlistIDFrom + &quot; copied to playlist &quot; + in_playlistIDTo]" />
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_emailNote]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">Copy_Video</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Videos from playlist &quot; + in_playlistIDFrom + &quot; copied to playlist &quot; + in_playlistIDTo]" />
   </Sequence>
 </Activity>
