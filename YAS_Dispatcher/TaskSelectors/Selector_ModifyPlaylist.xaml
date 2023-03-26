@@ -65,6 +65,7 @@
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Selector_ModifyPlaylist" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -78,14 +79,14 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID6</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID2">
+    <FlowStep x:Name="__ReferenceID6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">140,34</av:Point>
           <av:Size x:Key="ShapeSize">200,52</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">140,60 80,60 80,126.5</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">140,60 85,60 85,80</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Modification to perform:" OptionsString="Edit Playlist Details;Add Video to Playlist;Remove Video from Playlist;Remove Duplicate Videos from Playlist" Title="How would you like to modify the playlist?">
@@ -99,7 +100,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:InputDialog>
       <FlowStep.Next>
-        <FlowSwitch x:TypeArguments="x:Int32" x:Name="__ReferenceID0" DisplayName="Flow Switch" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
+        <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID0" DisplayName="Flow Switch" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_2">
           <FlowSwitch.Default>
             <FlowStep x:Name="__ReferenceID1">
               <sap:WorkflowViewStateService.ViewState>
@@ -117,18 +118,108 @@
               </ui:MessageBox>
             </FlowStep>
           </FlowSwitch.Default>
+          <FlowSwitch.Expression>
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_taskToPerform" />
+          </FlowSwitch.Expression>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <av:Point x:Key="ShapeLocation">45,126.5</av:Point>
+              <av:Point x:Key="ShapeLocation">50,80</av:Point>
               <av:Size x:Key="ShapeSize">70,87</av:Size>
-              <av:PointCollection x:Key="Default">62.5,213.5 62.5,243.50000000000003 100,243.50000000000003 100,374</av:PointCollection>
+              <av:PointCollection x:Key="Default">67.5,167 67.5,197.00000000000003 100,197.00000000000003 100,374</av:PointCollection>
+              <av:PointCollection x:Key="Remove Duplicate Videos from PlaylistConnector">102.5,167 102.5,185.04 142.5,185.04 142.5,244.04 330.5,244.04 330.5,370 370,370</av:PointCollection>
+              <av:PointCollection x:Key="Edit Playlist DetailsConnector">120,101.75 165.5,101.75 165.5,172.04 352.5,172.04 352.5,220 370,220</av:PointCollection>
+              <av:PointCollection x:Key="Add Video to PlaylistConnector">120,123.5 160.5,123.5 160.5,196.04 346.5,196.04 346.5,270 370,270</av:PointCollection>
+              <av:PointCollection x:Key="Remove Video from PlaylistConnector">120,145.25 149.5,145.25 149.5,219.04 338.5,219.04 338.5,320 370,320</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <FlowStep x:Key="Add Video to Playlist" x:Name="__ReferenceID3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">370,244</av:Point>
+                <av:Size x:Key="ShapeSize">200,52</av:Size>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TaskSelectors\ModifyPlaylist\Selector_AddVideo.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="TaskSelectors\ModifyPlaylist\Selector_AddVideo.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_taskInfo">
+                  <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="out_dict_taskInfo" />
+                </OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+          </FlowStep>
+          <FlowStep x:Key="Remove Video from Playlist" x:Name="__ReferenceID5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">370,294</av:Point>
+                <av:Size x:Key="ShapeSize">200,52</av:Size>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TaskSelectors\ModifyPlaylist\Selector_RemoveVideo.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="TaskSelectors\ModifyPlaylist\Selector_RemoveVideo.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_taskInfo">
+                  <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="out_dict_taskInfo" />
+                </OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+          </FlowStep>
+          <FlowStep x:Key="Remove Duplicate Videos from Playlist" x:Name="__ReferenceID4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">370,344</av:Point>
+                <av:Size x:Key="ShapeSize">200,52</av:Size>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TaskSelectors\ModifyPlaylist\Selector_RemoveDuplicates.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="TaskSelectors\ModifyPlaylist\Selector_RemoveDuplicates.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_taskInfo">
+                  <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="out_dict_taskInfo" />
+                </OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+          </FlowStep>
+          <FlowStep x:Key="Edit Playlist Details" x:Name="__ReferenceID2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">370,194</av:Point>
+                <av:Size x:Key="ShapeSize">200,52</av:Size>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistDetails.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistDetails.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_taskInfo">
+                  <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="out_dict_taskInfo" />
+                </OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+          </FlowStep>
         </FlowSwitch>
       </FlowStep.Next>
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
   </Flowchart>
 </Activity>
