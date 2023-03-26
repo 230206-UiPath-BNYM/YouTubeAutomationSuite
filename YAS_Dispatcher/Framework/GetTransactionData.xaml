@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1140,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1008,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -198,7 +198,9 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Selector_MergePlaylists.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="TaskSelectors\Selector_MergePlaylists.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_taskInfo">
+                  <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="out_dict_taskInfo" />
+                </OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -236,9 +238,14 @@
                 <av:Size x:Key="ShapeSize">200,52</av:Size>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Selector_ModifyPlaylist.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="TaskSelectors\Selector_ModifyPlaylist.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Selector_ModifyPlaylist.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="TaskSelectors\Selector_ModifyPlaylist.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_taskInfo">
+                  <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="out_dict_taskInfo" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_taskToPerform">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_taskToPerform" />
+                </OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
