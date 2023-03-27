@@ -119,9 +119,9 @@
               <av:Size x:Key="ShapeSize">70,87</av:Size>
               <av:PointCollection x:Key="Default">67.5,167 67.5,197.00000000000003 100,197.00000000000003 100,374</av:PointCollection>
               <av:PointCollection x:Key="Remove Duplicate Videos from PlaylistConnector">120,145.25 150,145.25 150,240 390,240</av:PointCollection>
-              <av:PointCollection x:Key="Edit Playlist DetailsConnector">102.5,167 102.5,330 170,330</av:PointCollection>
-              <av:PointCollection x:Key="Add Video to PlaylistConnector">120,101.75 150,101.75 150,140 390,140</av:PointCollection>
-              <av:PointCollection x:Key="Remove Video from PlaylistConnector">120,123.5 150,123.5 150,190 390,190</av:PointCollection>
+              <av:PointCollection x:Key="Edit Playlist DetailsConnector">102.5,167 102.5,188.00000000000003 142.5,188.00000000000003 142.5,330 170,330</av:PointCollection>
+              <av:PointCollection x:Key="Add Video to PlaylistConnector">120,101.75 162.5,101.75 162.5,140 390,140</av:PointCollection>
+              <av:PointCollection x:Key="Remove Video from PlaylistConnector">120,123.5 156.5,123.5 156.5,190 390,190</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <FlowStep x:Key="Add Video to Playlist" x:Name="__ReferenceID2">
@@ -278,7 +278,7 @@
                       <av:Size x:Key="ShapeSize">200,52</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistPrivacy.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistPrivacy.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistPrivacy.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistPrivacy.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_taskInfo">
                         <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="out_dict_taskInfo" />
