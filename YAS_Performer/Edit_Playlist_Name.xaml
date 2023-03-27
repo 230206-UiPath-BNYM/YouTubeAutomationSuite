@@ -4,12 +4,12 @@
     <x:Property Name="in_Playlist_ID" Type="InArgument(x:String)" />
     <x:Property Name="in_Playlist_Description" Type="InArgument(x:String)" />
     <x:Property Name="in_Playlist_Name" Type="InArgument(x:String)" />
-    <x:Property Name="out_Email_Type" Type="InArgument(x:String)" />
+    <x:Property Name="out_Email_Type" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1353,2994</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>836,2994</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Edit_Playlist_Name_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
