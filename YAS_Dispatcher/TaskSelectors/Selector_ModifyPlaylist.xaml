@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1008,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1008,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Selector_ModifyPlaylist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -66,6 +66,14 @@
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Selector_ModifyPlaylist" sap:VirtualizedContainerService.HintSize="644,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -111,9 +119,9 @@
               <av:Size x:Key="ShapeSize">70,87</av:Size>
               <av:PointCollection x:Key="Default">67.5,167 67.5,197.00000000000003 100,197.00000000000003 100,374</av:PointCollection>
               <av:PointCollection x:Key="Remove Duplicate Videos from PlaylistConnector">120,145.25 150,145.25 150,240 390,240</av:PointCollection>
-              <av:PointCollection x:Key="Edit Playlist DetailsConnector">102.5,167 102.5,181.52 123,181.52 123,330 170,330</av:PointCollection>
-              <av:PointCollection x:Key="Add Video to PlaylistConnector">120,101.75 164,101.75 164,140 390,140</av:PointCollection>
-              <av:PointCollection x:Key="Remove Video from PlaylistConnector">120,123.5 157,123.5 157,190 390,190</av:PointCollection>
+              <av:PointCollection x:Key="Edit Playlist DetailsConnector">102.5,167 102.5,330 170,330</av:PointCollection>
+              <av:PointCollection x:Key="Add Video to PlaylistConnector">120,101.75 150,101.75 150,140 390,140</av:PointCollection>
+              <av:PointCollection x:Key="Remove Video from PlaylistConnector">120,123.5 150,123.5 150,190 390,190</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <FlowStep x:Key="Add Video to Playlist" x:Name="__ReferenceID2">
@@ -189,7 +197,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:InputDialog>
             <FlowStep.Next>
-              <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID6" DisplayName="Flow Switch" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_4">
+              <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID6" DisplayName="Flow Switch" Expression="[playlistDetail]" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_4">
                 <FlowSwitch.Default>
                   <FlowStep x:Name="__ReferenceID0">
                     <sap:WorkflowViewStateService.ViewState>
@@ -207,9 +215,6 @@
                     </ui:MessageBox>
                   </FlowStep>
                 </FlowSwitch.Default>
-                <FlowSwitch.Expression>
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="playlistDetail" />
-                </FlowSwitch.Expression>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">235,426.5</av:Point>
@@ -229,7 +234,12 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistName.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistName.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                      <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_taskInfo">
+                        <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="out_dict_taskInfo" />
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_TaskToPerform">
+                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_taskToPerform" />
+                      </OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -247,7 +257,12 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistDescription.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistDescription.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                      <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_taskInfo">
+                        <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="out_dict_taskInfo" />
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_taskToPerform">
+                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_taskToPerform" />
+                      </OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -263,9 +278,14 @@
                       <av:Size x:Key="ShapeSize">200,52</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistPrivacy.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistPrivacy.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistPrivacy.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="TaskSelectors\ModifyPlaylist\Selector_EditPlaylistPrivacy.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                      <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_taskInfo">
+                        <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="out_dict_taskInfo" />
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_taskToPerform">
+                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_taskToPerform" />
+                      </OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
