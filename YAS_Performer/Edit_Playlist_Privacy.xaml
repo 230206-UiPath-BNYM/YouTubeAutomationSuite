@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Edit_Playlist_Privacy" this:Edit_Playlist_Privacy.in_Playlist_Name="Hood Classics" this:Edit_Playlist_Privacy.in_Playlist_Description="Good hood music" this:Edit_Playlist_Privacy.in_Playlist_ID="PLrH3xuQqFq0Zijf7WB6hVctU1fXCT0mkY" this:Edit_Playlist_Privacy.in_Privacy="public" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Edit_Playlist_Privacy" this:Edit_Playlist_Privacy.in_Playlist_Name="Hood Classics" this:Edit_Playlist_Privacy.in_Playlist_Description="Good hood music" this:Edit_Playlist_Privacy.in_Playlist_ID="PLWZVp56cvpBwTkWELkp3f-1gCnLk64kNM" this:Edit_Playlist_Privacy.in_Privacy="public" this:Edit_Playlist_Privacy.in_Token="ya29.a0Ael9sCPTFUWOK0w7YyICfwV_SMNBsuHrqL74MU0oayHWQWcHEUJ3jgGkWZX3l84huyb2uAHYpOrBJQbXfd4cksCD3Dw-3gFOIE_k6g-2oATXJJyZra09OcYhnVdoad9I3fyDdEspxz4fABpD00TZLnH6F0MqrV6IaCgYKAcESARISFQF4udJh4ioI-9ximYHiZLcSfIlJOw0167" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Playlist_Name" Type="InArgument(x:String)" />
     <x:Property Name="in_Playlist_Description" Type="InArgument(x:String)" />
@@ -6,11 +6,12 @@
     <x:Property Name="in_Privacy" Type="InArgument(x:String)" />
     <x:Property Name="in_Token" Type="InArgument(x:String)" />
     <x:Property Name="out_Email_Type" Type="OutArgument(x:String)" />
+    <x:Property Name="argument1" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1353,2877</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2774,3009</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Edit_Playlist_Privacy_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -103,7 +104,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Arguments&#xA; -In &#xA;     *In-Playlist_Name -&gt; The name of the playlist you are updating&#xA;     *in_Playlist_Description -&gt; new description of the playlist you are updating&#xD;&#xA;     *in_Privacy -&gt; changes whether a playlist is public or private&#xA;     *in_Token -&gt; for HTTP request&#xA;      *in_Playlist_ID -&gt; ID of the playlist we want to edit. &#xA;&#xA;-Out &#xA;      *out_Email_Type -&gt; email type sent to Sent_Emails.xmal for user updates &#xA;&#xA;TEST DATA&#xA;PLAYLIST_ID = PLrH3xuQqFq0Zijf7WB6hVctU1fXCT0mkY&#xD;&#xA;" DisplayName="Edit_Playlist_Privacy" sap:VirtualizedContainerService.HintSize="572,2812" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Arguments&#xA; -In &#xA;     *In-Playlist_Name -&gt; The name of the playlist you are updating&#xA;     *in_Playlist_Description -&gt; new description of the playlist you are updating&#xA;     *in_Privacy -&gt; changes whether a playlist is public or private&#xA;     *in_Token -&gt; for HTTP request&#xA;      *in_Playlist_ID -&gt; ID of the playlist we want to edit. &#xA;&#xA;-Out &#xA;      *out_Email_Type -&gt; email type sent to Sent_Emails.xmal for user updates &#xA;&#xA;TEST DATA&#xA;PLAYLIST_ID = PLrH3xuQqFq0Zijf7WB6hVctU1fXCT0mkY&#xA;" DisplayName="Edit_Playlist_Privacy" sap:VirtualizedContainerService.HintSize="572,2944" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="playlist_Description_Body_Txt" />
       <Variable x:TypeArguments="x:String" Name="response_C" />
@@ -116,6 +117,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Edit_Playlist_Privacy&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Token = &quot;+ in_Token]" />
     <If Condition="[in_Token = &quot;&quot;]" DisplayName="If for testing token after test" sap:VirtualizedContainerService.HintSize="510,52" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -147,7 +149,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:ReadTextFile File="{x:Null}" Content="[playlist_Description_Body_Txt]" DisplayName="Read Text File" FileName="Playlist_HTTP_Body\Update_Playlist_Description.txt" sap:VirtualizedContainerService.HintSize="510,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:ReadTextFile File="{x:Null}" Content="[playlist_Description_Body_Txt]" DisplayName="Read Text File" FileName="Playlist_HTTP_Body\Edit_Privacy.txt" sap:VirtualizedContainerService.HintSize="510,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
     <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[playlist_Description_Body_Txt]</OutArgument>
@@ -181,7 +183,7 @@
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[playlist_Description_Body_Txt]" />
-    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[playlist_Description_Body_Txt]" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2Cstatus" sap:VirtualizedContainerService.HintSize="510,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="PUT" OAuth2Token="[in_Token]" Result="[response_C]" StatusCode="[response_Status]" TimeoutMS="6000">
+    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[playlist_Description_Body_Txt]" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2Cstatus&amp;key=AIzaSyCYTu4q8uWEprdmBixv-7fmE6GQT6mKrE0 HTTP/1.1" sap:VirtualizedContainerService.HintSize="510,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="PUT" OAuth2Token="[in_Token]" Result="[response_C]" StatusCode="[response_Status]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
