@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1008,1875</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1008,1968</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Selector_EditPlaylistPrivacy_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -89,9 +89,10 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Selector_EditPlaylistName" sap:VirtualizedContainerService.HintSize="512,1810" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Selector_EditPlaylistName" sap:VirtualizedContainerService.HintSize="512,1903" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="query_playlists" />
       <Variable x:TypeArguments="scg:IList(x:String)" Default="[New List(Of String)]" Name="playlistNames" />
@@ -101,6 +102,7 @@
       <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
       <Variable x:TypeArguments="x:String" Name="currentPlaylistPrivacy" />
       <Variable x:TypeArguments="x:String" Name="newPlaylistPrivacy" />
+      <Variable x:TypeArguments="x:String" Name="currentPlaylistDescription" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -124,8 +126,12 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Run_Database_Query.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DatabaseManagement\Run_Database_Query.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_query">SELECT [name], [yt_playlist_id], [privacy] FROM Playlists</InArgument>
-          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_result">[query_playlists]</OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_query">
+            <Literal x:TypeArguments="x:String">SELECT [name], [yt_playlist_id], [privacy], [description] FROM Playlists</Literal>
+          </InArgument>
+          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_result">
+            <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="query_playlists" />
+          </OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[query_playlists]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="484,361" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
@@ -160,7 +166,7 @@
       </ui:InputDialog.Result>
     </ui:InputDialog>
     <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[query_playlists]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="450,292" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="name" LookupValue="[playlistChoice]" RowIndex="[rowIndex]" TargetColumnName="yt_playlist_id" />
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="450,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="450,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -179,6 +185,14 @@
               <InArgument x:TypeArguments="x:String">[query_playlists(rowIndex)("privacy").ToString]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[currentPlaylistDescription]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[query_playlists(rowIndex)("description").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
@@ -188,9 +202,9 @@
         <OutArgument x:TypeArguments="x:String">[newPlaylistPrivacy]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="450,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
       <ui:MultipleAssign.AssignOperations>
-        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
             <ui:AssignOperation.To>
               <OutArgument x:TypeArguments="x:String">[out_dict_taskInfo("playlistID")]</OutArgument>
@@ -205,6 +219,22 @@
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
               <InArgument x:TypeArguments="x:String">[newPlaylistPrivacy]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[out_dict_taskInfo("name")]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[playlistChoice]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[out_dict_taskInfo("description")]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[currentPlaylistDescription]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
