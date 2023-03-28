@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2774,3031</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1353,3016</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Edit_Description_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="62">
@@ -106,7 +106,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Arguments&#xA; -In &#xA;     *In-Playlist_Name -&gt; The name of the playlist you are updating&#xA;     *in_Playlist_Description -&gt; new description of the playlist you are updating&#xA;     *in_User_ID -&gt; ID of the user who owns the playlist&#xA;     *in_Token -&gt; for HTTP request&#xA;      *in_Playlist_ID -&gt; ID of the playlist we want to edit. &#xA;&#xA;-Out &#xA;      *out_Email_Type -&gt; email type sent to Sent_Emails.xmal for user updates &#xA;&#xA;TEST DATA&#xA;PLAYLIST_ID = PLrH3xuQqFq0Zijf7WB6hVctU1fXCT0mkY&#xA;in_Playlist_Description = in_Playlist_Description" DisplayName="Edit_Description" sap:VirtualizedContainerService.HintSize="572,2966" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Arguments&#xA; -In &#xA;     *In-Playlist_Name -&gt; The name of the playlist you are updating&#xA;     *in_Playlist_Description -&gt; new description of the playlist you are updating&#xA;     *in_Token -&gt; for HTTP request&#xA;      *in_Playlist_ID -&gt; ID of the playlist we want to edit. &#xA;&#xA;-Out &#xA;      *out_Email_Type -&gt; email type sent to Sent_Emails.xmal for user updates &#xA;&#xA;TEST DATA&#xA;PLAYLIST_ID = PLrH3xuQqFq0Zijf7WB6hVctU1fXCT0mkY&#xA;in_Playlist_Description = in_Playlist_Description" DisplayName="Edit_Description" sap:VirtualizedContainerService.HintSize="572,2951" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="playlist_Description_Body_Txt" />
       <Variable x:TypeArguments="x:Int32" Name="response_Status" />
