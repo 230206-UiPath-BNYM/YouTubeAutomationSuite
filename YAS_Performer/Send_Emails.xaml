@@ -15,7 +15,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1954,1145</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2162,1142</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Emails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -105,7 +105,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Send_Emails&#xD;&#xA;&#xA; *Arguments&#xA;&#xA;    In arguments&#xA;        -in_Email_Type -&gt; String that goes to a switch statement that chooses email HTML content to send over" DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="508,739" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Send_Emails&#xA;&#xA; *Arguments&#xA;&#xA;    In arguments&#xA;        -in_Email_Type -&gt; String that goes to a switch statement that chooses email HTML content to send over" DisplayName="Send_Emails" sap:VirtualizedContainerService.HintSize="508,873" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="html_Content" />
       <Variable x:TypeArguments="x:Object" Name="channel_Name" />
@@ -122,6 +122,15 @@
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Diplays the in_Email_Type that gets pushed to the Switch " DisplayName="Log in_Email_Type" sap:VirtualizedContainerService.HintSize="446,94" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[in_Email_Type]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
