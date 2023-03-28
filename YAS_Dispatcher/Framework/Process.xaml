@@ -101,7 +101,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Queue Item" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="388,192" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="YAS_Transactions">
+    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Queue Item" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="388,192" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="YAS_Transactions" Reference="[in_TaskToPerform]">
       <ui:AddQueueItem.ItemInformation>
         <InArgument x:TypeArguments="x:String" x:Key="TaskToPerform">[in_TaskToPerform]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="TaskInfo">[String.Join(vbcrlf, in_TaskInfo)]</InArgument>
@@ -109,9 +109,6 @@
       <ui:AddQueueItem.ItemInformationCollection>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
       </ui:AddQueueItem.ItemInformationCollection>
-      <ui:AddQueueItem.Reference>
-        <InArgument x:TypeArguments="x:String" />
-      </ui:AddQueueItem.Reference>
       <ui:AddQueueItem.TimeoutMS>
         <InArgument x:TypeArguments="x:Int32" />
       </ui:AddQueueItem.TimeoutMS>
