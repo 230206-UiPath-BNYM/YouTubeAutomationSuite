@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,2367</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>952,2493</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Create_Playlist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -105,7 +105,7 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add_Video" sap:VirtualizedContainerService.HintSize="496,2302" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add_Video" sap:VirtualizedContainerService.HintSize="496,2428" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="reqCode" />
       <Variable x:TypeArguments="x:String" Name="readFile" />
@@ -122,6 +122,7 @@
       <Variable x:TypeArguments="sd:DataTable" Name="videoDt" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)({})]" Name="dupeChecker" />
       <Variable x:TypeArguments="x:String" Name="realItemID" />
+      <Variable x:TypeArguments="x:String" Name="tempSql" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -219,7 +220,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_AuthTok">[in_AuthTok]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Assign DisplayName="Init SQL command" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Init SQL command" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[sqlCommand]</OutArgument>
       </Assign.To>
@@ -389,7 +390,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[realItemID]</OutArgument>
       </Assign.To>
@@ -405,12 +406,20 @@
         <InArgument x:TypeArguments="x:Int32">[vidID.IndexOf(in_videoID)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[tempSql]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[vidName(idx).Replace("'", "''")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[sqlCommand]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[sqlCommand + "'" + playlistsDt.Rows(rowIdx).Item("id").ToString + "', '" + realItemID + "', '" + vidID(idx) + "', '" + vidName(idx) + "', '" + "https://youtu.be/" + in_videoID + "')"]</InArgument>
+        <InArgument x:TypeArguments="x:String">[sqlCommand + "'" + playlistsDt.Rows(rowIdx).Item("id").ToString + "', '" + realItemID + "', '" + vidID(idx) + "', '" + tempSql + "', '" + "https://youtu.be/" + in_videoID + "')"]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Run_Database_Command.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Run_Database_Command.xaml">
@@ -419,7 +428,7 @@
         <OutArgument x:TypeArguments="x:Int32" x:Key="out_numRowsAffected" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_emailNote]</OutArgument>
       </Assign.To>
