@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>828,1742</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>952,1742</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Create_Playlist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="74">
@@ -143,7 +143,7 @@
               <OutArgument x:TypeArguments="x:String">[url]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&amp;playlistId=PLACEHOLDER&amp;key=APIKEYPLACE</InArgument>
+              <InArgument x:TypeArguments="x:String">https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&amp;maxResults=50&amp;playlistId=PLACEHOLDER&amp;key=APIKEYPLACE</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">

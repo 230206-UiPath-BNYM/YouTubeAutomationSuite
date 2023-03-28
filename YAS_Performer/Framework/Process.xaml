@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>836,1803</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>870,1803</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -201,10 +201,10 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence x:Key="Add Video to Playlist" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence x:Key="Add Video to Playlist" sap:VirtualizedContainerService.HintSize="450,316" sap2010:WorkflowViewState.IdRef="Sequence_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -284,10 +284,18 @@
         </ui:ForEach>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add_Video.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Add_Video.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_playlistID">[arg1]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_videoID">[arg2]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_AuthTok">[authTok]</InArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_emailNote">[emailMsg]</OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_playlistID">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg1" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_videoID">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg2" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_AuthTok">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="authTok" />
+            </InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_emailNote">
+              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailMsg" />
+            </OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
@@ -633,10 +641,10 @@
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
-      <Sequence x:Key="Edit Playlist Name" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_28">
+      <Sequence x:Key="Edit Playlist Name" sap:VirtualizedContainerService.HintSize="450,316" sap2010:WorkflowViewState.IdRef="Sequence_28">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -735,18 +743,28 @@
         </ui:ForEach>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Edit_Playlist_Name.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Edit_Playlist_Name.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Token">[authTok]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_ID">[arg2]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Description">[arg3]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Name">[arg1]</InArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_Email_Type">[emailMsg]</OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Token">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="authTok" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_ID">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg2" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Description">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg3" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Name">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg1" />
+            </InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_Email_Type">
+              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailMsg" />
+            </OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
-      <Sequence x:Key="Edit Playlist Privacy" sap:VirtualizedContainerService.HintSize="450,316" sap2010:WorkflowViewState.IdRef="Sequence_53">
+      <Sequence x:Key="Edit Playlist Privacy" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_53">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -811,7 +829,7 @@
                           </Sequence>
                         </ui:IfElseIfBlock.Then>
                       </ui:IfElseIfBlock>
-                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currArg(0) = &quot;playlistDescription&quot;]">
+                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currArg(0) = &quot;description&quot;]">
                         <ui:IfElseIfBlock.Then>
                           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_50">
                             <sap:WorkflowViewStateService.ViewState>
@@ -830,7 +848,7 @@
                           </Sequence>
                         </ui:IfElseIfBlock.Then>
                       </ui:IfElseIfBlock>
-                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currArg(0) = &quot;playlistPrivacy&quot;]">
+                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currArg(0) = &quot;privacy&quot;]">
                         <ui:IfElseIfBlock.Then>
                           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_51">
                             <sap:WorkflowViewStateService.ViewState>
@@ -958,14 +976,14 @@
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
-      <Sequence x:Key="Merge Playlists" sap:VirtualizedContainerService.HintSize="707,316" sap2010:WorkflowViewState.IdRef="Sequence_37">
+      <Sequence x:Key="Merge Playlists" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_37">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="645,52" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[inputArgs]">
+        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[inputArgs]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="x:String">
               <ActivityAction.Argument>
@@ -1039,7 +1057,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEach>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Merge_Playlists.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="645,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Merge_Playlists.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Merge_Playlists.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Merge_Playlists.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_playlistTo">[arg2]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_playlistFrom">[arg1]</InArgument>
@@ -1048,7 +1066,7 @@
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
-      <Sequence x:Key="Remove Duplicate Videos from Playlist" sap:VirtualizedContainerService.HintSize="707,316" sap2010:WorkflowViewState.IdRef="Sequence_40">
+      <Sequence x:Key="Remove Duplicate Videos from Playlist" sap:VirtualizedContainerService.HintSize="707,970" sap2010:WorkflowViewState.IdRef="Sequence_40">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1282,8 +1300,12 @@
     </Switch>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send_Emails.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="497,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Send_Emails.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Email_Type">[emailMsg]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Email_To">yas.p2.project@gmail.com</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Email_Type">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="emailMsg" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Email_To">
+          <Literal x:TypeArguments="x:String">yas.p2.project@gmail.com</Literal>
+        </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_ID" />
         <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Name" />
         <InArgument x:TypeArguments="x:String" x:Key="in_Video_Name" />
