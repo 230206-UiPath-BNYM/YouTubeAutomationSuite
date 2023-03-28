@@ -94,9 +94,9 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        <av:Point x:Key="ShapeLocation">520,32.5</av:Point>
+        <av:Point x:Key="ShapeLocation">520,52.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">520,70 440,70</av:PointCollection>
+        <av:PointCollection x:Key="ConnectorLocation">520,90 440,90</av:PointCollection>
         <x:Double x:Key="Width">634</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
@@ -106,12 +106,12 @@
     <FlowStep x:Name="__ReferenceID0">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">240,44</av:Point>
+          <av:Point x:Key="ShapeLocation">240,64</av:Point>
           <av:Size x:Key="ShapeSize">200,52</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">240,70 197,70 197,29.039999999999992 67.5,29.039999999999992 67.5,80</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">240,90 210,90 210,50 67.5,50 67.5,80</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Task to perform:" OptionsString="Create Playlist;Delete Playlist;Merge Playlists;List Videos;Modify Playlist;Like Video" Title="What would you like to do?">
+      <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Task to perform:" OptionsString="Create Playlist;Delete Playlist;Merge Playlists;List Videos;Modify Playlist;Like Video;Quit" Title="What would you like to do?">
         <ui:InputDialog.Result>
           <OutArgument x:TypeArguments="x:String">[out_taskToPerform]</OutArgument>
         </ui:InputDialog.Result>
@@ -152,6 +152,7 @@
               <av:PointCollection x:Key="Modify PlaylistConnector">102.5,167 102.5,180.04 139.5,180.04 139.5,279.03999999999996 358.5,279.03999999999996 358.5,420 400,420</av:PointCollection>
               <av:PointCollection x:Key="Like VideoConnector">85,167 85,189.04 133.5,189.04 133.5,302.03999999999996 352.5,302.03999999999996 352.5,470 400,470</av:PointCollection>
               <av:PointCollection x:Key="SubscribeConnector">67.5,167 67.5,198.00000000000003 126.5,198.00000000000003 126.5,325.00000000000006 345.5,325.00000000000006 345.5,520 400,520</av:PointCollection>
+              <av:PointCollection x:Key="QuitConnector">50,123.5 20,123.5 20,30 240,30</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <FlowStep x:Key="Create Playlist" x:Name="__ReferenceID3">
@@ -213,7 +214,7 @@
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">400,344</av:Point>
                 <av:Size x:Key="ShapeSize">200,52</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">600,370 630,370 630,126 340,126 340,96</av:PointCollection>
+                <av:PointCollection x:Key="ConnectorLocation">600,370 630,370 630,146 340,146 340,116</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Selector_ListVideos.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="TaskSelectors\Selector_ListVideos.xaml">
@@ -285,6 +286,33 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
           </FlowStep>
+          <FlowStep x:Key="Quit" x:Name="__ReferenceID10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">240,4</av:Point>
+                <av:Size x:Key="ShapeSize">200,52</av:Size>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,101" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[out_taskToPerform]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">quit</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MultipleAssign>
+          </FlowStep>
         </FlowSwitch>
       </FlowStep.Next>
     </FlowStep>
@@ -297,5 +325,6 @@
     <x:Reference>__ReferenceID7</x:Reference>
     <x:Reference>__ReferenceID8</x:Reference>
     <x:Reference>__ReferenceID9</x:Reference>
+    <x:Reference>__ReferenceID10</x:Reference>
   </Flowchart>
 </Activity>
