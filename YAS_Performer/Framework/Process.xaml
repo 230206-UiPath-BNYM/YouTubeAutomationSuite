@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,1568</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>952,1803</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -96,7 +96,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="559,1503" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="559,1738" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="instruct" />
       <Variable x:TypeArguments="x:String" Name="authTok" />
@@ -194,7 +194,7 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_accessToken">[authTok]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[instruct]" sap:VirtualizedContainerService.HintSize="497,509" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[instruct]" sap:VirtualizedContainerService.HintSize="497,744" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -522,10 +522,10 @@
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
-      <Sequence x:Key="Edit Playlist Desc" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_20">
+      <Sequence x:Key="Edit Playlist Desc" sap:VirtualizedContainerService.HintSize="450,316" sap2010:WorkflowViewState.IdRef="Sequence_20">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -535,7 +535,7 @@
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:String" Name="currentItem" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="609,1260" sap2010:WorkflowViewState.IdRef="Sequence_19">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="609,1579" sap2010:WorkflowViewState.IdRef="Sequence_19">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -549,7 +549,7 @@
                     <InArgument x:TypeArguments="s:String[]">[currentItem.Split(", ")]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="547,1027" sap2010:WorkflowViewState.IdRef="IfElseIf_5">
+                <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="547,1346" sap2010:WorkflowViewState.IdRef="IfElseIf_5">
                   <ui:IfElseIf.ConditionBlocks>
                     <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                       <ui:IfElseIfBlock BlockType="If" Condition="[currArg(0) = &quot;playlistName&quot;]">
@@ -609,6 +609,25 @@
                           </Sequence>
                         </ui:IfElseIfBlock.Then>
                       </ui:IfElseIfBlock>
+                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[currArg(0) = &quot;privacy&quot;]">
+                        <ui:IfElseIfBlock.Then>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_41">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[arg4]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[currArg(1)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </ui:IfElseIfBlock.Then>
+                      </ui:IfElseIfBlock>
                     </sc:BindingList>
                   </ui:IfElseIf.ConditionBlocks>
                 </ui:IfElseIf>
@@ -624,12 +643,25 @@
         </ui:ForEach>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Edit_Playlist_Description.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Edit_Playlist_Description.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Token">[authTok]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Description">[arg3]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_ID">[arg2]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Name">[arg1]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Token">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="authTok" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Description">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg3" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_ID">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg2" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Name">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg1" />
+            </InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_User_ID" />
-            <OutArgument x:TypeArguments="x:String" x:Key="out_Email_Type">[emailMsg]</OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_Email_Type">
+              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailMsg" />
+            </OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Privacy">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg4" />
+            </InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
