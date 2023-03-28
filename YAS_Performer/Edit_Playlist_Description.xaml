@@ -6,12 +6,11 @@
     <x:Property Name="in_Playlist_Name" Type="InArgument(x:String)" />
     <x:Property Name="in_User_ID" Type="InArgument(x:String)" />
     <x:Property Name="out_Email_Type" Type="OutArgument(x:String)" />
-    <x:Property Name="in_Playlist_Privacy" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,3860</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2162,2287</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Edit_Description_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="62">
@@ -107,13 +106,11 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Arguments&#xA; -In &#xA;     *In-Playlist_Name -&gt; The name of the playlist you are updating&#xA;     *in_Playlist_Description -&gt; new description of the playlist you are updating&#xA;     *in_Token -&gt; for HTTP request&#xA;      *in_Playlist_ID -&gt; ID of the playlist we want to edit. &#xA;&#xA;-Out &#xA;      *out_Email_Type -&gt; email type sent to Sent_Emails.xmal for user updates &#xA;&#xA;TEST DATA&#xA;PLAYLIST_ID = PLrH3xuQqFq0Zijf7WB6hVctU1fXCT0mkY&#xA;in_Playlist_Description = in_Playlist_Description" DisplayName="Edit_Description" sap:VirtualizedContainerService.HintSize="572,3795" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Arguments&#xA; -In &#xA;     *In-Playlist_Name -&gt; The name of the playlist you are updating&#xA;     *in_Playlist_Description -&gt; new description of the playlist you are updating&#xA;     *in_Token -&gt; for HTTP request&#xA;      *in_Playlist_ID -&gt; ID of the playlist we want to edit. &#xA;&#xA;-Out &#xA;      *out_Email_Type -&gt; email type sent to Sent_Emails.xmal for user updates &#xA;" DisplayName="Edit_Description" sap:VirtualizedContainerService.HintSize="496,2222" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="playlist_Description_Body_Txt" />
       <Variable x:TypeArguments="x:Int32" Name="response_Status" />
       <Variable x:TypeArguments="x:String" Name="response_C" />
-      <Variable x:TypeArguments="x:String" Name="url" />
-      <Variable x:TypeArguments="x:String" Name="apiKey" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -121,7 +118,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Start Message" sap:VirtualizedContainerService.HintSize="510,52" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Edit_Description Started&quot;]">
+    <ui:LogMessage DisplayName="Log Start Message" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Edit_Description Started&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -129,11 +126,12 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <If Condition="[in_Token = &quot;&quot;]" DisplayName="If for testing token after test" sap:VirtualizedContainerService.HintSize="510,52" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="If AUTH Token is null this workflow will tigger to get a new OAUTH2.0 Token&#xD;&#xA;" Condition="[in_Token = &quot;&quot;]" DisplayName="If for testing token after test" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
@@ -160,9 +158,25 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Variable Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Info in_Playlist_Description = &quot; + in_Playlist_Description + &quot; in_Playlist_ID = &quot; + in_Playlist_ID + &quot; in_Playlist_Name = &quot; + in_Playlist_Name + &quot; in_Token = &quot; + in_Token]" />
-    <ui:ReadTextFile File="{x:Null}" Content="[playlist_Description_Body_Txt]" DisplayName="Read Text File" FileName="Playlist_HTTP_Body\Update_Playlist_Description.txt" sap:VirtualizedContainerService.HintSize="510,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <ui:LogMessage sap2010:Annotation.AnnotationText="in_Playlist_ID tells developer what playlist ID is being requested to be deleted&#xD;&#xA;" DisplayName="Log Variable Message" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Info in_Playlist_Description = &quot; + in_Playlist_Description + &quot; in_Playlist_ID = &quot; + in_Playlist_ID + &quot; in_Playlist_Name = &quot; + in_Playlist_Name + &quot; in_Token = &quot; + in_Token]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="This reads a txt file to create a HTTPS Body for an API Request for the Youtube API &#xD;&#xA;" Content="[playlist_Description_Body_Txt]" DisplayName="Read Text File" FileName="Playlist_HTTP_Body\Update_Playlist_Description.txt" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ReadTextFile>
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[playlist_Description_Body_Txt]</OutArgument>
       </Assign.To>
@@ -170,7 +184,7 @@
         <InArgument x:TypeArguments="x:String">[playlist_Description_Body_Txt.Replace("NEWPLAYLIST_TITLE", in_Playlist_Name)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[playlist_Description_Body_Txt]</OutArgument>
       </Assign.To>
@@ -178,7 +192,7 @@
         <InArgument x:TypeArguments="x:String">[playlist_Description_Body_Txt.Replace("playlist_description", in_Playlist_Description)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[playlist_Description_Body_Txt]</OutArgument>
       </Assign.To>
@@ -186,57 +200,16 @@
         <InArgument x:TypeArguments="x:String">[playlist_Description_Body_Txt.Replace("YOUR_PLAYLIST_ID", in_Playlist_ID)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:GetRobotAsset AssetName="API Key" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
-      <ui:GetRobotAsset.TimeoutMS>
-        <InArgument x:TypeArguments="x:Int32" />
-      </ui:GetRobotAsset.TimeoutMS>
-      <ui:GetRobotAsset.Value>
-        <OutArgument x:TypeArguments="x:String">[apiKey]</OutArgument>
-      </ui:GetRobotAsset.Value>
-    </ui:GetRobotAsset>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="510,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
-      <ui:MultipleAssign.AssignOperations>
-        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[playlist_Description_Body_Txt]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[playlist_Description_Body_Txt.Replace("PLAYLIST_VIEWABLE_TYPE", in_Playlist_Privacy)]</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[url]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2Cstatus&amp;key=[YOUR_API_KEY] HTTP/1.1</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[url]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[url.Replace("[YOUR_API_KEY]", apiKey)]</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-        </scg:List>
-      </ui:MultipleAssign.AssignOperations>
-    </ui:MultipleAssign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="510,282" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_6">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[playlist_Description_Body_Txt]" />
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[playlist_Description_Body_Txt]" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[url]" sap:VirtualizedContainerService.HintSize="510,70" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="PUT" OAuth2Token="[in_Token]" Result="[response_C]" StatusCode="[response_Status]" TimeoutMS="6000">
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Displays HTTPS BODY for API Request&#xD;&#xA;" DisplayName="Log Playlist HTTPS Body " sap:VirtualizedContainerService.HintSize="434,109" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[playlist_Description_Body_Txt]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" sap2010:Annotation.AnnotationText="HTTPS Youtube API V3 PUT Request&#xD;&#xA;" AuthenticationType="None" Body="[playlist_Description_Body_Txt]" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="https://youtube.googleapis.com/youtube/v3/playlists?part=snippet" sap:VirtualizedContainerService.HintSize="434,127" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="PUT" OAuth2Token="[in_Token]" Result="[response_C]" StatusCode="[response_Status]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -252,21 +225,38 @@
       <ui:HttpClient.UrlSegments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:HttpClient>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="510,282" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_7">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[response_C]" />
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[response_Status]" />
-    <If Condition="[response_Status = 200]" sap:VirtualizedContainerService.HintSize="510,1141" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Response content to API Call" DisplayName="Log Response Content" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[response_C]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Response code to API Call" DisplayName="Log response_Status" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[response_Status]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <If sap2010:Annotation.AnnotationText="HTTPS Request is 200 and next action is to update the YAS Database SQL Sever to reflect the changes on Youtube's API&#xD;&#xA;" Condition="[response_Status = 200]" DisplayName="If HTTPS response code = 200" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="476,911" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
@@ -341,7 +331,23 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[out_Email_Type + &quot; is the email that will be sent to Sent_Emails.xaml&quot;]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Edit_Playlist_Description Completed&quot;]" />
+    <ui:LogMessage sap2010:Annotation.AnnotationText="String to Send_Emails to send email about Edit_Playlist_Description" DisplayName="Log Email Type to Send_Emails" sap:VirtualizedContainerService.HintSize="434,94" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[out_Email_Type + &quot; is the email that will be sent to Sent_Emails.xaml&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:LogMessage sap2010:Annotation.AnnotationText="States Edit_Playlist_Descriptoin has ended" DisplayName="Log End Message" sap:VirtualizedContainerService.HintSize="434,109" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Edit_Playlist_Description Completed&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
   </Sequence>
 </Activity>
