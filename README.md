@@ -1,14 +1,12 @@
 # YouTubeAutomationSuite
 
 ## The Team
-
 - Gavin Gilbert (Team Lead)
 - Irving Gonzalez Islas
 - Justin Quach
 
 ## Project Overview
-
-Youtube is a vast online video library that virtually unlimited content for free but with this vast library keeping track of the videos you want to watch is a challenge and using playlists to track videos is somewhat limited with Youtube current playlist mamangement options. The solution, the Youtube Automation Suite (YAS).YAS will allow you to manage your YouTube playlists automatically using the automation power of UIPATH's automation abilities combined with Azure SQL Server to store user's data to lower the costs of API calls to Youtube. YAS can also provide updates for each each via email updates using Google integration. 
+YouTube is a vast online video library that offers virtually unlimited free content. However, keeping track of the videos you want to watch can be challenging, and using playlists to track videos is somewhat limited with YouTube's current playlist management options. The solution is the YouTube Automation Suite (YAS). YAS will allow you to manage your YouTube playlists automatically using the automation power of UiPath combined with Azure SQL Server to store user data and lower the costs of API calls to YouTube. YAS can also provide email updates for each video using Google integration.
 
 ### Completed MVP Features
 - OAUTH2.0 and API integration with Youtube API to limit on browser inactions.
@@ -20,7 +18,6 @@ Youtube is a vast online video library that virtually unlimited content for free
 - Add Videos to Playlists using Youtube's POST Playlist API to add a new playlist to Youtube's and YAS's database servers.  
 - Remove Videos from Playlists using Youtube's DELETE Playlist API to delete a video in the AZURE SQL Database and Youtube database.
 - Like a Video using Youtube's POST Playlist API to like a selected video. 
-- Subscribe to a Channel using Youtube's POST Channel API to subscribe to a certain Subscribe to a channel using their Channel ID. 
 - Send Email to user whenever YAS updates playlists such as creating, deleting, renaming, description edits, etc using GMAIL access token.
 - Copy Videos from One Playlist to Another using GET, POST, AND REMOVE Youtube APIs to copy videos from one playlist to another while deleting a playlist.  
 
