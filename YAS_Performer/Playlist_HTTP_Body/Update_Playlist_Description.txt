@@ -3,7 +3,7 @@
   "snippet": {
   "title" : "NEWPLAYLIST_TITLE",
     "description": "playlist_description"
-  }
+  },
   "status": {
     "privacyStatus": "PLAYLIST_VIEWABLE_TYPE"
   }
