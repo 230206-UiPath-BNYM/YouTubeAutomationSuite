@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>836,2239</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>836,2241</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OAuthGen_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -41,6 +41,7 @@
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
       <x:String>System.ComponentModel</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -91,22 +92,24 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="&quot;https://developers.google.com/oauthplayground/#step2&amp;apisSelect=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&amp;auth_code=4%2F0AVHEtk43SFwl6imQaT4mMm4iAzFjB1PwosNEMJuhwUwLCn1OX22liGspwMPsriq0w4h_PQ&amp;refresh_token=1%2F%2F04F_7YKIs1XB0CgYIARAAGAQSNwF-L9IrLhYS2Y5koF4fEnI_Ax7ixZLu3d0hBfCjCIUbZqXwDaTBinus4syPU_ieEcBe9b4FrQc&amp;access_token_field=ya29.a0Ael9sCOP-HV5TqKF0S-_dFjK5C9C3PfI157PpPeIbvX3vnZOQxHw4TgtdVl4PP7Pd0fHZ3GgMXZqTTc27r_6nzcJ8p8ukikVABsPu4GSnore3kt75xj-SJ1b6ViWtPMbkCC2Q1ocjQ0_ZZQGn2Sv9rlyH1SraCgYKAXkSARESFQF4udJhmN3Pnaw0MGw_YsOqfLlyHQ0163&amp;url=https%3A%2F%2F&amp;content_type=application%2Fjson&amp;http_method=GET&amp;useDefaultOauthCred=checked&amp;oauthEndpointSelect=Google&amp;oauthAuthEndpointValue=https%3A%2F%2Faccounts.google.com%2Fo%2Foauth2%2Fv2%2Fauth&amp;oauthTokenEndpointValue=https%3A%2F%2Foauth2.googleapis.com%2Ftoken&amp;oauthClientId=5635649722-95b8i513df6no3ho7rbnc0c8laortuoh.apps.googleusercontent.com&amp;expires_in=3598&amp;oauthClientSecret=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&amp;access_token_issue_date=1679944389&amp;for_access_token=ya29.a0Ael9sCOP-HV5TqKF0S-_dFjK5C9C3PfI157PpPeIbvX3vnZOQxHw4TgtdVl4PP7Pd0fHZ3GgMXZqTTc27r_6nzcJ8p8ukikVABsPu4GSnore3kt75xj-SJ1b6ViWtPMbkCC2Q1ocjQ0_ZZQGn2Sv9rlyH1SraCgYKAXkSARESFQF4udJhmN3Pnaw0MGw_YsOqfLlyHQ0163&amp;includeCredentials=checked&amp;accessTokenType=bearer&amp;autoRefreshToken=checked&amp;accessType=offline&amp;prompt=consent&amp;response_type=code&amp;wrapLines=on&quot;" DisplayName="OAuthGen" sap:VirtualizedContainerService.HintSize="568,2174" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="&quot;https://developers.google.com/oauthplayground/#step2&amp;apisSelect=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&amp;auth_code=4%2F0AVHEtk43SFwl6imQaT4mMm4iAzFjB1PwosNEMJuhwUwLCn1OX22liGspwMPsriq0w4h_PQ&amp;refresh_token=1%2F%2F04F_7YKIs1XB0CgYIARAAGAQSNwF-L9IrLhYS2Y5koF4fEnI_Ax7ixZLu3d0hBfCjCIUbZqXwDaTBinus4syPU_ieEcBe9b4FrQc&amp;access_token_field=ya29.a0Ael9sCOP-HV5TqKF0S-_dFjK5C9C3PfI157PpPeIbvX3vnZOQxHw4TgtdVl4PP7Pd0fHZ3GgMXZqTTc27r_6nzcJ8p8ukikVABsPu4GSnore3kt75xj-SJ1b6ViWtPMbkCC2Q1ocjQ0_ZZQGn2Sv9rlyH1SraCgYKAXkSARESFQF4udJhmN3Pnaw0MGw_YsOqfLlyHQ0163&amp;url=https%3A%2F%2F&amp;content_type=application%2Fjson&amp;http_method=GET&amp;useDefaultOauthCred=checked&amp;oauthEndpointSelect=Google&amp;oauthAuthEndpointValue=https%3A%2F%2Faccounts.google.com%2Fo%2Foauth2%2Fv2%2Fauth&amp;oauthTokenEndpointValue=https%3A%2F%2Foauth2.googleapis.com%2Ftoken&amp;oauthClientId=5635649722-95b8i513df6no3ho7rbnc0c8laortuoh.apps.googleusercontent.com&amp;expires_in=3598&amp;oauthClientSecret=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&amp;access_token_issue_date=1679944389&amp;for_access_token=ya29.a0Ael9sCOP-HV5TqKF0S-_dFjK5C9C3PfI157PpPeIbvX3vnZOQxHw4TgtdVl4PP7Pd0fHZ3GgMXZqTTc27r_6nzcJ8p8ukikVABsPu4GSnore3kt75xj-SJ1b6ViWtPMbkCC2Q1ocjQ0_ZZQGn2Sv9rlyH1SraCgYKAXkSARESFQF4udJhmN3Pnaw0MGw_YsOqfLlyHQ0163&amp;includeCredentials=checked&amp;accessTokenType=bearer&amp;autoRefreshToken=checked&amp;accessType=offline&amp;prompt=consent&amp;response_type=code&amp;wrapLines=on&quot;" DisplayName="OAuthGen" sap:VirtualizedContainerService.HintSize="568,2176" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="IfOpenedByAppBrowser" DisplayName="Use Browser Edge: OAuth 2.0 Playground" sap:VirtualizedContainerService.HintSize="506,1691" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Always" ScopeGuid="6448fdb9-3f9a-43e5-8772-5dfc83e33085" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="IfOpenedByAppBrowser" DisplayName="Use Browser Edge: OAuth 2.0 Playground" sap:VirtualizedContainerService.HintSize="506,1693" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Always" ScopeGuid="6448fdb9-3f9a-43e5-8772-5dfc83e33085" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472,1474" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472,1476" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="tokenStatus" />
             </Sequence.Variables>
@@ -150,7 +153,7 @@
                 </uix:TargetAnchorable>
               </uix:NGetText.Target>
             </uix:NGetText>
-            <If sap:VirtualizedContainerService.HintSize="410,510" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[tokenStatus = &quot;The access token has expired.&quot;]" sap:VirtualizedContainerService.HintSize="410,510" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
