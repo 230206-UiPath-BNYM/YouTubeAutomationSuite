@@ -123,6 +123,12 @@
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
     <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="448,868" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
         <If Condition="[HTTPS_Status = &quot;2&quot;]" sap:VirtualizedContainerService.HintSize="410,640" sap2010:WorkflowViewState.IdRef="If_1">
           <If.Then>
@@ -143,7 +149,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <Throw Exception="[new BusinessRuleException(&quot;HTTPS Check&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;API Call Unsuccessful&quot;]" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;API Call Unsuccessful reach out to admin&quot;]" />
             </Sequence>
           </If.Else>
         </If>
