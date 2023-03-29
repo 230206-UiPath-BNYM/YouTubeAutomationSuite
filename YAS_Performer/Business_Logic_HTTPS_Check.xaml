@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1164,1409</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1164,1439</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Business_Logic_HTTPS_Check_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -80,7 +80,7 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Business Logic &#xA;If HTTPS it will throw a business exception of a failed API call and then it end the transaction. &#xD;&#xA;&#xD;&#xA;Takes in a INT32 argument such as &#xD;&#xA;in_Https_Code = 200  then no business exception is thrown. &#xD;&#xA;otherwise &#xD;&#xA;in_Https_Code = 205  then no business exception is thrown. &#xD;&#xA;otherwise &#xD;&#xA;in_Https_Code = 400  then a business exception is thrown.  " DisplayName="Business_Logic_HTTPS_Check" sap:VirtualizedContainerService.HintSize="510,1344" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Business Logic &#xA;If HTTPS it will throw a business exception of a failed API call and then it end the transaction. &#xD;&#xA;&#xD;&#xA;Takes in a INT32 &#xD;&#xA;&#xD;&#xA;Examples of Tests are below &#xD;&#xA;in_Https_Code = 200, API is good then no business exception is thrown. &#xD;&#xA;otherwise &#xD;&#xA;in_Https_Code = 205, API is good  then no business exception is thrown. &#xD;&#xA;otherwise &#xD;&#xA;in_Https_Code = 400, API is bad then a business exception is thrown.  " DisplayName="Business_Logic_HTTPS_Check" sap:VirtualizedContainerService.HintSize="510,1374" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="HTTPS_Status" />
       <Variable x:TypeArguments="x:String" Name="HTTPS_Code_String" />
@@ -89,6 +89,7 @@
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="448,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
