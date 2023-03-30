@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,1803</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1133,1533</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -40,6 +40,7 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -96,7 +97,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="559,1738" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="559,1468" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="instruct" />
       <Variable x:TypeArguments="x:String" Name="authTok" />
@@ -194,7 +195,85 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_accessToken">[authTok]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[instruct]" sap:VirtualizedContainerService.HintSize="497,744" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <TryCatch DisplayName="OAUTH2.0 Business Exception Check" sap:VirtualizedContainerService.HintSize="497,52" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <If Condition="[authTok = &quot;&quot;]" sap:VirtualizedContainerService.HintSize="410,508" sap2010:WorkflowViewState.IdRef="If_1">
+          <If.Then>
+            <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_56">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Throw Exception="[new BusinessRuleException(&quot;OAUTH2.0 Token cannot be empty&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_57">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;OAUTH2.0 Token Sucess&quot;]" />
+            </Sequence>
+          </If.Else>
+        </If>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="456,364" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="450,295" sap2010:WorkflowViewState.IdRef="Sequence_58">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[exception.Message]" />
+              <ui:SetTransactionStatus ContinueOnError="{x:Null}" ServiceBaseAddress="{x:Null}" DisplayName="Set Transaction Status" ErrorType="Business" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_1" Status="Failed" TransactionItem="[in_TransactionItem]">
+                <ui:SetTransactionStatus.Analytics>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument" />
+                </ui:SetTransactionStatus.Analytics>
+                <ui:SetTransactionStatus.Details>
+                  <InArgument x:TypeArguments="x:String" />
+                </ui:SetTransactionStatus.Details>
+                <ui:SetTransactionStatus.Output>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument" />
+                </ui:SetTransactionStatus.Output>
+                <ui:SetTransactionStatus.Reason>
+                  <InArgument x:TypeArguments="x:String" />
+                </ui:SetTransactionStatus.Reason>
+                <ui:SetTransactionStatus.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:SetTransactionStatus.TimeoutMS>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:SetTransactionStatus>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[instruct]" sap:VirtualizedContainerService.HintSize="497,382" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -522,14 +601,14 @@
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
-      <Sequence x:Key="Edit Playlist Desc" sap:VirtualizedContainerService.HintSize="450,316" sap2010:WorkflowViewState.IdRef="Sequence_20">
+      <Sequence x:Key="Edit Playlist Desc" sap:VirtualizedContainerService.HintSize="707,1927" sap2010:WorkflowViewState.IdRef="Sequence_20">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[inputArgs]">
+        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="645,52" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[inputArgs]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="x:String">
               <ActivityAction.Argument>
@@ -641,27 +720,15 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEach>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Edit_Playlist_Description.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Edit_Playlist_Description.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Edit_Playlist_Description.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="645,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Edit_Playlist_Description.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Token">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="authTok" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Description">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg3" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_ID">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg2" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Name">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg1" />
-            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Token">[authTok]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Description">[arg3]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_ID">[arg2]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Name">[arg1]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_User_ID" />
-            <OutArgument x:TypeArguments="x:String" x:Key="out_Email_Type">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailMsg" />
-            </OutArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Privacy">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg4" />
-            </InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_Email_Type">[emailMsg]</OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Privacy">[arg4]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
@@ -786,24 +853,12 @@
         </ui:ForEach>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Edit_Playlist_Name.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Edit_Playlist_Name.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Token">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="authTok" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_ID">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg2" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Description">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg3" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Name">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg1" />
-            </InArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_Email_Type">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailMsg" />
-            </OutArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Privacy">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg4" />
-            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Token">[authTok]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_ID">[arg2]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Description">[arg3]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Name">[arg1]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_Email_Type">[emailMsg]</OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Playlist_Privacy">[arg4]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
