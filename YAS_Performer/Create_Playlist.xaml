@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,2773</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>930,2518</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Create_Playlist_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -105,7 +105,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Create_Playlist&#xA;&#xA;TESTING &gt;&gt;&gt; Just add a string name to in_Playlist_Name arugment &#xA;Example in_Playlist_Name = &quot;TEST11&quot;&#xA;&#xA;&#xA; *Arguments&#xA;&#xA;    In arguments&#xA;        -Token for OAUTH2.0 Requests (if empty rerun OAUTH GEN)&#xA;        -in_Playlist_Name -&gt; is the name for the new playlist. &#xA;&#xA;    Out arguments&#xA;        -out_Playlist_Name sends the name so it can be included in a email for a user for updates&#xA;        -out_Email_Type sends string to Send_Email as a switch case to let it know what email to send. &#xA;" DisplayName="Create_Playlist" sap:VirtualizedContainerService.HintSize="572,2708" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Create_Playlist-&#xA; *Arguments&#xA;&#xA;    In arguments&#xA;        -Token for OAUTH2.0 Requests (if empty rerun OAUTH GEN)&#xA;        -in_Playlist_Name -&gt; is the name for the new playlist. &#xA;&#xA;    Out arguments&#xA;        -out_Playlist_Name sends the name so it can be included in a email for a user for updates&#xA;        -out_Email_Type sends string to Send_Email as a switch case to let it know what email to send. &#xA;" DisplayName="Create_Playlist" sap:VirtualizedContainerService.HintSize="572,2453" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="readText" />
       <Variable x:TypeArguments="x:Int32" Name="response_code" />
@@ -202,7 +202,7 @@
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[response_code.ToString]" />
-    <If Condition="[response_code = 200]" sap:VirtualizedContainerService.HintSize="510,1373" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[response_code = 200]" sap:VirtualizedContainerService.HintSize="510,1193" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="476,1043" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
